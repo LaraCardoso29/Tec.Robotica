@@ -6,7 +6,7 @@ Trabalho Escolar de Robótica (Maria Laura), Física Tec. ( Jeane) e  Programaç
 
 📌 Sobre o Projeto
 
-Este projeto consiste em uma aplicação web interativa em estilo cartões 3D flutuantes (Flip Cards) que aborda os principais mitos e verdades sobre o daltonismo. O estudo conecta conceitos científicos aprendidos nas aulas de:
+Este projeto consiste em uma aplicação web interativa em estilo cartões 3D flutuantes (Flash cards) que aborda os principais mitos e verdades sobre o daltonismo. O estudo conecta conceitos científicos aprendidos nas aulas de:
 
 💡 Física: Teoria das cores, espectro luminoso e percepção visual, olho humano.
 
