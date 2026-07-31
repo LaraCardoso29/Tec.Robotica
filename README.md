@@ -20,23 +20,5 @@ Cartões Interativos 3D: Clique em qualquer cartão para revelar se a afirmaçã
 
 Design Temático: Paleta de cores em tons de rosa e violeta escuro para reforçar o contraste e a percepção cromática.
 
-Acessibilidade: Navegação disponível via teclado (Enter / Espaço) e suporte a leitores de tela.
 
-Responsividade: Funciona perfeitamente em computadores, tablets e celulares.
-
-📁 Estrutura de Arquivos
-
-├── index.html       # Código principal do site (HTML, CSS e JS)
-├── README.md        # Documentação e apresentação do projeto
-└── img/             # Pasta com as fotos dos circuitos e imagens explicativas
-    ├── 1.jpg
-    ├── 1.0.jpeg
-    ├── 2.jpg
-    ├── 3.jpg
-    ├── 4.jpg
-    ├── lulu.jpeg
-    ├── iiiii.jpeg
-    ├── sasa.jpeg
-    ├── okok.jpeg
-    └── aba.jpeg
 
