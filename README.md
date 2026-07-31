@@ -3,7 +3,7 @@
 
 Trabalho Escolar de Robótica, Física e Tecnologia de Programação
 
-Autora: Lara Cardoso Alvino
+ Lara Cardoso Alvino
 
 📌 Sobre o Projeto
 
