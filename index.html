@@ -1,23 +1,26 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mitos e Verdades sobre o Daltonismo</title>
   
-  <style>
-    /* Importação da fonte Inter */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+  <!-- Importação da fonte Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
-    /* Variáveis de cores no tema Rosa */
+  <style>
     :root {
       --rosa-principal: #ec4899;
       --rosa-escuro: #be185d;
       --rosa-suave: #fce7f3;
-      --fundo-dark: #180914;
-      --cartao-fundo: #2a1224;
+      --fundo-dark: #130610;
+      --cartao-fundo: #230d1d;
+      --cartao-borda: #831843;
       --texto-claro: #fdf2f8;
       --texto-rosa: #f472b6;
+      --gradiente-card: linear-gradient(160deg, #3b0726 0%, #1c0717 100%);
     }
 
     * {
@@ -29,75 +32,94 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--fundo-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(236, 72, 153, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(190, 24, 93, 0.08) 0%, transparent 40%);
       color: var(--texto-claro);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      overflow-x: hidden;
     }
 
-    /* Cabeçalho */
     .cabecalho {
-      background: linear-gradient(135deg, #831843 0%, #500724 100%);
-      padding: 1.5rem 2rem;
-      border-b: 2px solid var(--rosa-principal);
+      background: linear-gradient(135deg, #831843 0%, #4c0519 100%);
+      padding: 1.25rem 2rem;
+      border-bottom: 2px solid var(--rosa-principal);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 20px rgba(236, 72, 153, 0.2);
+      box-shadow: 0 4px 25px rgba(236, 72, 153, 0.25);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
     }
 
     .cabecalho h1 {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: #fff;
       text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      letter-spacing: -0.02em;
     }
 
     .cabecalho-link {
       color: var(--rosa-suave);
       text-decoration: none;
       font-weight: 600;
-      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      padding: 0.5rem 1.2rem;
       border: 1px solid var(--rosa-principal);
-      border-radius: 20px;
+      border-radius: 9999px;
       transition: all 0.3s ease;
+      background: rgba(236, 72, 153, 0.1);
     }
 
     .cabecalho-link:hover {
       background-color: var(--rosa-principal);
       color: #fff;
+      box-shadow: 0 0 15px rgba(236, 72, 153, 0.5);
+      transform: translateY(-1px);
     }
 
-    /* Conteúdo Principal */
     main {
       max-width: 1200px;
-      margin: 2rem auto;
+      margin: 2.5rem auto;
       padding: 0 1.5rem;
       width: 100%;
       flex: 1;
     }
 
-    main h2 {
+    .subtitulo-projeto {
       text-align: center;
       font-size: 1.8rem;
       color: var(--texto-rosa);
-      margin-bottom: 2rem;
-      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
     }
 
-    /* Grid de Cartões */
+    .descricao-projeto {
+      text-align: center;
+      color: #fbcfe8;
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+      opacity: 0.85;
+    }
+
     section {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 2rem;
     }
 
-    /* Efeito Flip 3D dos Cartões */
     .cartao {
       perspective: 1000px;
-      height: 380px;
+      height: 420px;
       cursor: pointer;
+      outline: none;
     }
 
     .cartao-interno {
@@ -105,10 +127,13 @@
       width: 100%;
       height: 100%;
       text-align: center;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
       transform-style: preserve-3d;
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.15);
+    }
+
+    .cartao:hover .cartao-interno {
+      box-shadow: 0 12px 30px rgba(236, 72, 153, 0.3);
     }
 
     .cartao.virado .cartao-interno {
@@ -122,91 +147,117 @@
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       border-radius: 20px;
-      border: 2px solid #831843;
+      border: 2px solid var(--cartao-borda);
       padding: 1.25rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      background-color: var(--cartao-fundo);
+      background: var(--cartao-fundo);
     }
 
     .cartao-verso {
       transform: rotateY(180deg);
       border-color: var(--rosa-principal);
-      background: linear-gradient(160deg, #4c0519 0%, #2a1224 100%);
+      background: var(--gradiente-card);
     }
 
-    /* Imagens dos Cartões com fallback de imagem em tom rosa */
     .cartao-imagem {
       width: 100%;
       height: 180px;
       object-fit: cover;
       border-radius: 12px;
-      border: 1px solid #831843;
-      margin-bottom: 0.8rem;
+      border: 1px solid var(--cartao-borda);
+      margin-bottom: 0.5rem;
       background-color: #500724;
+      transition: transform 0.3s ease;
+    }
+
+    .cartao:hover .cartao-imagem {
+      transform: scale(1.02);
     }
 
     .cartao p {
-      font-size: 1rem;
-      line-height: 1.4;
+      font-size: 0.95rem;
+      line-height: 1.45;
       font-weight: 600;
       color: var(--texto-claro);
     }
 
     .tag-resultado {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
       font-size: 0.85rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
     .tag-mito {
-      background-color: #9f1239;
+      background-color: #881337;
       color: #fecdd3;
       border: 1px solid #f43f5e;
+      box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
     }
 
     .tag-verdade {
       background-color: #831843;
       color: #fbcfe8;
       border: 1px solid #ec4899;
+      box-shadow: 0 0 10px rgba(236, 72, 153, 0.3);
     }
 
     .dica-clique {
       font-size: 0.75rem;
       color: var(--texto-rosa);
-      margin-top: 0.5rem;
+      margin-top: 0.4rem;
       opacity: 0.8;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-weight: 600;
     }
 
-    /* Rodapé em tom Rosa */
     footer {
-      background-color: #3b0764;
-      background: linear-gradient(135deg, #500724 0%, #180914 100%);
-      border-t: 1px solid #831843;
-      padding: 2rem 1.5rem;
+      background: linear-gradient(135deg, #3b0726 0%, #130610 100%);
+      border-top: 1px solid var(--cartao-borda);
+      padding: 2.5rem 1.5rem;
       text-align: center;
-      margin-top: 3rem;
+      margin-top: 4rem;
     }
 
     footer h1 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: var(--rosa-principal);
       text-transform: capitalize;
       margin-bottom: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
     }
 
     footer p {
       font-size: 0.85rem;
       color: #fbcfe8;
-      max-width: 600px;
+      max-width: 650px;
       margin: 0 auto;
-      line-height: 1.5;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .badge-robotica {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.3rem 0.8rem;
+      background: rgba(236, 72, 153, 0.15);
+      border: 1px solid var(--rosa-principal);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: var(--rosa-suave);
+      font-weight: 600;
     }
   </style>
 </head>
@@ -220,22 +271,31 @@
   </header> 
 
   <main> 
-    <h2>Trabalho de Robótica, Fisica e Tec, Programção.</h2> 
+    <h2 class="subtitulo-projeto">Trabalho de Robótica, Física e Tec. Programação</h2> 
+    <p class="descricao-projeto">Estudo interativo sobre a percepção das cores e daltonismo, desenvolvido com práticas de circuito Arduino e LED RGB.</p>
 
     <section> 
 
       <!-- CARTÃO 1 -->
-      <article class="cartao" onclick="virarCartao(this)">
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 1: Visão em preto e branco">
         <div class="cartao-interno"> 
           <div class="cartao-frente"> 
-            <src="img/computador .jpg"">
-            <img src="img/1.jpg" alt="Visão em preto e branco" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/500724/f472b6?text=Imagem+1+(Frente)'" /> 
+            <img 
+              src="img/1.jpg" 
+              alt="Circuito Arduino e LED RGB da aula de Robótica" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><rect x=\'80\' y=\'60\' width=\'240\' height=\'130\' rx=\'10\' fill=\'%23180914\' stroke=\'%23ec4899\' stroke-width=\'2\'/><circle cx=\'200\' cy=\'125\' r=\'35\' fill=\'%23ec4899\' opacity=\'0.8\'/><text x=\'200\' y=\'130\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23ffffff\' text-anchor=\'middle\' font-weight=\'bold\'>Experimento LED RGB</text><text x=\'200\' y=\'215\' font-family=\'sans-serif\' font-size=\'12\' fill=\'%23f472b6\' text-anchor=\'middle\'>Robótica e Visão de Cores</text></svg>'" 
+            /> 
             <p>Daltônicos enxergam o mundo apenas em preto e branco.</p> 
             <span class="dica-clique">👆 Clique para virar</span>
           </div> 
           <div class="cartao-verso"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/1.0.jpeg" alt="Mito" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/831843/ffffff?text=MITO!'" /> 
+            <img 
+              src="img/1.0.jpeg" 
+              alt="Mito - Visão com daltonismo" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Acromatopsia é raríssima</text></svg>'" 
+            /> 
             <div>
               <span class="tag-resultado tag-mito">❌ MITO!</span>
               <p>A maioria dos daltônicos enxerga cores, mas tem dificuldade de diferenciar certos tons (como verde e vermelho). A visão totalmente em preto e branco (acromatopsia) é raríssima.</p> 
@@ -245,17 +305,25 @@
       </article> 
 
       <!-- CARTÃO 2 -->
-      <article class="cartao" onclick="virarCartao(this)">
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 2: Genética e incidência">
         <div class="cartao-interno"> 
           <div class="cartao-frente"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/2.jpg" alt="Genética masculina e feminina" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/500724/f472b6?text=Imagem+2+(Frente)'" /> 
+            <img 
+              src="img/2.jpg" 
+              alt="Genética masculina e feminina" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><text x=\'140\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23f472b6\' font-weight=\'bold\'>XY</text><text x=\'260\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23ec4899\' font-weight=\'bold\'>XX</text><text x=\'200\' y=\'190\' font-family=\'sans-serif\' font-size=\'13\' fill=\'%23fdf2f8\' text-anchor=\'middle\'>Genética do Cromossomo X</text></svg>'" 
+            /> 
             <p>O daltonismo afeta muito mais os homens do que as mulheres.</p> 
             <span class="dica-clique">👆 Clique para virar</span>
           </div> 
           <div class="cartao-verso"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/3.jpg" alt="Verdade" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/831843/ffffff?text=VERDADE!'" /> 
+            <img 
+              src="img/3.jpg" 
+              alt="Verdade - Estatísticas de genética" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>✅ VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>8% dos Homens vs 0,5% das Mulheres</text></svg>'" 
+            /> 
             <div>
               <span class="tag-resultado tag-verdade">✅ VERDADE!</span>
               <p>Como a mutação fica no cromossomo X, homens (XY) precisam de apenas um gene alterado (~8% da população), enquanto mulheres (XX) precisam de dois (~0,5%).</p> 
@@ -265,17 +333,25 @@
       </article> 
 
       <!-- CARTÃO 3 -->
-      <article class="cartao" onclick="virarCartao(this)">
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 3: Cura e Óculos especiais">
         <div class="cartao-interno"> 
           <div class="cartao-frente"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/4.jpg" alt="Óculos para daltonismo" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/500724/f472b6?text=Imagem+3+(Frente)'" /> 
+            <img 
+              src="img/4.jpg" 
+              alt="Óculos para daltonismo" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><path d=\'M100 120 Q150 80 200 120 Q250 80 300 120\' stroke=\'%23f472b6\' stroke-width=\'5\' fill=\'none\'/><circle cx=\'150\' cy=\'130\' r=\'35\' fill=\'none\' stroke=\'%23ec4899\' stroke-width=\'4\'/><circle cx=\'250\' cy=\'130\' r=\'35\' fill=\'none\' stroke=\'%23ec4899\' stroke-width=\'4\'/></svg>'" 
+            /> 
             <p>Óculos especiais conseguem CURAR o daltonismo completamente.</p> 
             <span class="dica-clique">👆 Clique para virar</span>
           </div> 
           <div class="cartao-verso"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/lulu.jpeg" alt="Mito" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/831843/ffffff?text=MITO!'" /> 
+            <img 
+              src="img/lulu.jpeg" 
+              alt="Mito - Óculos e filtros de luz" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Óculos apenas ajustam contraste</text></svg>'" 
+            /> 
             <div>
               <span class="tag-resultado tag-mito">❌ MITO!</span>
               <p>Não há cura genética. Óculos especiais possuem filtros que aumentam o contraste entre tonalidades, mas não fazem os olhos verem cores inexistentes na retina.</p> 
@@ -285,17 +361,25 @@
       </article> 
 
       <!-- CARTÃO 4 -->
-      <article class="cartao" onclick="virarCartao(this)">
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 4: Carteira de Motorista">
         <div class="cartao-interno"> 
           <div class="cartao-frente"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/iiiii.jpeg" alt="Semáforo e motorista" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/500724/f472b6?text=Imagem+4+(Frente)'" /> 
+            <img 
+              src="img/iiiii.jpeg" 
+              alt="Semáforo e motorista" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><rect x=\ me\'170\' y=\'40\' width=\'60\' height=\'160\' rx=\'10\' fill=\'%23180914\' stroke=\'%23ec4899\' stroke-width=\'2\'/><circle cx=\'200\' cy=\'70\' r=\'18\' fill=\'%23ef4444\'/><circle cx=\'200\' cy=\'120\' r=\'18\' fill=\'%23eab308\'/><circle cx=\'200\' cy=\'170\' r=\'18\' fill=\'%2322c55e\'/></svg>'" 
+            /> 
             <p>Pessoas com daltonismo são proibidas de tirar carteira de motorista.</p> 
             <span class="dica-clique">👆 Clique para virar</span>
           </div> 
           <div class="cartao-verso"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/sasa.jpeg" alt="Mito" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/831843/ffffff?text=MITO!'" /> 
+            <img 
+              src="img/sasa.jpeg" 
+              alt="Mito - Legislação e trânsito" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Permitido no Brasil e no mundo</text></svg>'" 
+            /> 
             <div>
               <span class="tag-resultado tag-mito">❌ MITO!</span>
               <p>No Brasil e na maioria dos países, daltônicos podem dirigir normalmente, pois memorizam a posição padronizada das luzes dos semáforos.</p> 
@@ -305,17 +389,25 @@
       </article> 
 
       <!-- CARTÃO 5 -->
-      <article class="cartao" onclick="virarCartao(this)">
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 5: Tipos de Daltonismo">
         <div class="cartao-interno"> 
           <div class="cartao-frente"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/okok.jpeg" alt="Tipos de daltonismo" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/500724/f472b6?text=Imagem+5+(Frente)'" /> 
+            <img 
+              src="img/okok.jpeg" 
+              alt="Tipos de daltonismo e espectro" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><circle cx=\'150\' cy=\'125\' r=\'40\' fill=\'%23ef4444\' opacity=\'0.7\'/><circle cx=\'200\' cy=\'125\' r=\'40\' fill=\'%2322c55e\' opacity=\'0.7\'/><circle cx=\'250\' cy=\'125\' r=\'40\' fill=\'%233b82f6\' opacity=\'0.7\'/></svg>'" 
+            /> 
             <p>Existem diferentes tipos de daltonismo além da insensibilidade ao verde.</p> 
             <span class="dica-clique">👆 Clique para virar</span>
           </div> 
           <div class="cartao-verso"> 
-            <!-- ANEXE SUA IMAGEM AQUI -->
-            <img src="img/aba.jpeg" alt="Verdade" class="cartao-imagem" onerror="this.src='https://placehold.co/400x250/831843/ffffff?text=VERDADE!'" /> 
+            <img 
+              src="img/aba.jpeg" 
+              alt="Verdade - Protanopia, Deuteranopia e Tritanopia" 
+              class="cartao-imagem" 
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>✅ VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Protanopia, Deuteranopia e Tritanopia</text></svg>'" 
+            /> 
             <div>
               <span class="tag-resultado tag-verdade">✅ VERDADE!</span>
               <p>Os tipos principais incluem Protanopia (vermelho), Deuteranopia (verde) e Tritanopia (dificuldade com tons de azul e amarelo).</p> 
@@ -328,14 +420,28 @@
   </main> 
 
   <footer> 
-    <h1>lara cardoso alvino</h1>
-    <p>Projeto criado para estudos de HTML, CSS e efeitos 3D com cartões flip. Desenvolvido com foco em responsividade e boas práticas de front-end.</p> 
+    <h1>Lara Cardoso Alvino</h1>
+    <p>Projeto criado para estudos de HTML, CSS e efeitos 3D com cartões flip. Desenvolvido com foco em responsividade, acessibilidade e boas práticas de front-end.</p> 
+    <div class="badge-robotica">🔬 Robótica • Física • Programação</div>
   </footer> 
 
   <script>
+    // Função para virar o cartão ao clicar ou pressionar Enter/Espaço
     function virarCartao(cartao) {
       cartao.classList.toggle('virado');
     }
+
+    // Suporte para navegação por teclado
+    document.querySelectorAll('.cartao').forEach(card => {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          virarCartao(card);
+        }
+      });
+    });
   </script>
 </body>
 </html>
+      
+  
