@@ -1,8 +1,7 @@
 # Site
  Mitos e Verdades sobre o Daltonismo
 
-Trabalho Escolar de Robótica, Física e Tecnologia de Programação
-
+Trabalho Escolar de Robótica (Maria Laura), Física Tec. ( Jeane) e  Programação (Buiu)
  Lara Cardoso Alvino
 
 📌 Sobre o Projeto
