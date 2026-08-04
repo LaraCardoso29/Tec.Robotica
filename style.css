@@ -1,125 +1,143 @@
-tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        pinkbrand: {
-                            50: '#fdf2f8',
-                            100: '#fce7f3',
-                            200: '#fbcfe8',
-                            300: '#f9a8d4',
-                            400: '#f472b6',
-                            500: '#ec4899',
-                            600: '#db2777',
-                            700: '#be185d',
-                            800: '#9d174d',
-                            900: '#831843',
-                            950: '#500724',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    <style>
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-        .transform-style-3d {
-            transform-style: preserve-3d;
-        }
-        .backface-hidden {
-            backface-visibility: hidden;
-            -webkit-backface-visibility: hidden;
-        }
-        .rotate-y-180 {
-            transform: rotateY(180deg);
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #db2777;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #f472b6;
-        }
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #eeea0c;
+    font-family: Arial, sans-serif;
+}
 
-        /* Color Blindness Simulation SVG Filters */
-        .filter-protanopia { filter: url('#protanopia-filter'); }
-        .filter-deuteranopia { filter: url('#deuteranopia-filter'); }
-        .filter-tritanopia { filter: url('#tritanopia-filter'); }
-        .filter-achromatopsia { filter: grayscale(100%); }
-    </style>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-pink-500 selection:text-white">
+.cabecalho {
+    padding: 15px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a5e70c;
+}
 
-    <!-- SVG Filters for Color Blindness Simulation -->
-    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <!-- Protanopia (Vermelho cego) -->
-            <filter id="protanopia-filter">
-                <feColorMatrix type="matrix" values="0.56667 0.43333 0 0 0  0.55833 0.44167 0 0 0  0 0.24167 0.75833 0 0  0 0 0 1 0"/>
-            </filter>
-            <!-- Deuteranopia (Verde cego) -->
-            <filter id="deuteranopia-filter">
-                <feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/>
-            </filter>
-            <!-- Tritanopia (Azul cego) -->
-            <filter id="tritanopia-filter">
-                <feColorMatrix type="matrix" values="0.95 0.05 0 0 0  0 0.43333 0.56667 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/>
-            </filter>
-        </defs>
-    </svg>
+.cabecalho-link {
+    color: #0b0b0b;
+    text-decoration: none;
+}
 
-    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-pink-900/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3.5">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-600 via-rose-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-pink-500/30">
-                    <i class="fa-solid font-extrabold text-white text-2xl fa-eye"></i>
-                </div>
-                <div>
-                    <h1 class="font-black text-xl sm:text-2xl leading-tight bg-gradient-to-r from-pink-300 via-rose-200 to-white bg-clip-text text-transparent">
-                        Daltonismo & Espectro RGB
-                    </h1>
-                    <p class="text-sm font-semibold text-pink-300 hidden sm:block">Projeto de Robótica & Biologia Humana</p>
-                </div>
-            </div>
+h1 {
+    color: #0d0d0d;
+    font-size: 24px;
+}
 
-            <!-- Global Color Filter Simulator Switcher -->
-            <div class="flex items-center space-x-2 sm:space-x-3">
-                <span class="text-sm font-bold text-pink-200 hidden md:inline"><i class="fa-solid fa-sliders mr-1.5 text-pink-400"></i> Simular Toda a Tela:</span>
-                <select id="sim-filter" onchange="applyColorFilter(this.value)" class="bg-slate-800 text-sm sm:text-base font-semibold text-pink-100 border-2 border-pink-500/50 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400 cursor-pointer shadow-md">
-                    <option value="none">Visão Normal (RGB)</option>
-                    <option value="deuteranopia">Deuteranopia (Sem Verde)</option>
-                    <option value="protanopia">Protanopia (Sem Vermelho)</option>
-                    <option value="tritanopia">Tritanopia (Sem Azul)</option>
-                    <option value="achromatopsia">Acromatopsia (Preto/Branco)</option>
-                </select>
-            </div>
-        </div>
-    </header>
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+}
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+main h2 {
+    margin-bottom: 30px;
+    color: #0d0d0d;
+    text-align: center;
+}
 
-        <!-- Intro Banner with Large Typography & Pink Theme -->
-        <section class="mb-12 bg-gradient-to-br from-slate-900 via-slate-900 to-pink-950/70 rounded-3xl p-6 sm:p-10 border-2 border-pink-500/30 shadow-2xl relative overflow-hidden">
-            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-80 h-80 bg-pink-500/15 rounded-full blur-3xl pointer-events-none"></div>
-            <div class="absolute bottom-0 left-1/3 -mb-10 w-80 h-80 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+footer {
+    background-color: #a5e70c;
+    padding: 15px 25px;
+    color: #0b0b0b;
+    text-align: center;
+}
 
-            <div class="relative z-10 max-w-4xl">
-                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-pink-500/20 border border-pink-500/40 text-pink-200 text-sm font-bold mb-5 shadow-sm">
-                    <i class="fa-solid fa-microchip text-pink-400 text-base"></i>
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    max-width: 1192px; 
+    width: 100%;
+    padding: 0 20px;
+}
+
+.cartao {
+    width: 280px;
+    height: 360px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.cartao-interno {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s; 
+    transform-style: preserve-3d;
+}
+
+.cartao:hover .cartao-interno {
+    transform: rotateY(180deg);
+}
+
+.cartao-frente, .cartao-verso {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(16, 15, 15, 0.15);
+    backface-visibility: hidden;
+    background-color: #afe6e7;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartao-verso {
+    transform: rotateY(180deg);
+}
+
+.cartao-imagem {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.cartao-frente p, .cartao-verso p {
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1200px) {
+    section {
+        max-width: 600px; /* 2 x 280px + 1 gap x 24px */
+    }
+}
+
+@media (max-width: 650px) {
+    section {
+        max-width: 320px;
+        gap: 16px;
+    }
     
+    .cartao {
+        width: 100%;
+        height: 340px;
+    }
+    
+    .cartao-imagem {
+        height: 180px;
+    }
+}
 
 
