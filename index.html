@@ -1,17 +1,225 @@
-<!DOCTYPE html><html lang="pt-br"><head>  <meta charset="UTF-8" />  <meta name="viewport" content="width=device-width, initial-scale=1.0" />  <title>Mitos e Verdades sobre o Daltonismo</title>
-  <!-- Importação da fonte Inter -->  <link rel="preconnect" href="https://fonts.googleapis.com">  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-  <!-- CSS externo -->  <link rel="stylesheet" href="style.css"></head><body>
-  <header class="cabecalho">    <h1>Mitos e Verdades sobre o Daltonismo</h1>    <nav>      <a href="#" class="cabecalho-link">Início</a>    </nav>  </header>
-  <main>    <h2 class="subtitulo-projeto">Trabalho de Robótica, Física e Tec. Programação</h2>    <p class="descricao-projeto">O daltonismo é uma condição que afeta a percepção das cores.Pessoas com daltonismo tem dificuldade para distinguir algumas cores,principalmente vermelho e verde,embora existam outros tipos.Essa condição é hereditária e não causa perda de visão , apenas altera a forma como as cores são percebidas.O diagnostico pode ser feito por exames oftalmológicos,e, apesar de não ter cura, existem recursos e tecnologias que ajudam as pessoas daltônicas no dia a dia . </p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mitos e Verdades sobre o Daltonismo</title>
+
+  <!-- Importação da fonte Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <h1>Mitos e Verdades sobre o Daltonismo</h1>
+    <nav>
+      <a href="#" class="cabecalho-link">Início</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="subtitulo-projeto">Trabalho de Robótica, Física e Tec. Programação</h2>
+    <p class="descricao-projeto">O daltonismo é uma condição que afeta a percepção das cores.Pessoas com daltonismo tem dificuldade para distinguir algumas cores,principalmente vermelho e verde,embora existam outros tipos.Essa condição é hereditária e não causa perda de visão , apenas altera a forma como as cores são percebidas.O diagnostico pode ser feito por exames oftalmológicos,e, apesar de não ter cura, existem recursos e tecnologias que ajudam as pessoas daltônicas no dia a dia . </p>
+
     <section>
-      <!-- CARTÃO 1 -->      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 1: Visão em preto e branco">        <div class="cartao-interno">          <div class="cartao-frente">            <img              src="img/computador .jpg"              alt="Circuito Arduino e LED RGB da aula de Robótica"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><rect x=\'80\' y=\'60\' width=\'240\' height=\'130\' rx=\'10\' fill=\'%23180914\' stroke=\'%23ec4899\' stroke-width=\'2\'/><circle cx=\'200\' cy=\'125\' r=\'35\' fill=\'%23ec4899\' opacity=\'0.8\'/><text x=\'200\' y=\'130\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23ffffff\' text-anchor=\'middle\' font-weight=\'bold\'>Experimento LED RGB</text><text x=\'200\' y=\'215\' font-family=\'sans-serif\' font-size=\'12\' fill=\'%23f472b6\' text-anchor=\'middle\'>Robótica e Visão de Cores</text></svg>'"            />            <p>Daltônicos enxergam o mundo apenas em preto e branco.</p>            <span class="dica-clique"> Clique para virar</span>          </div>          <div class="cartao-verso">            <img              src="img/1.0.jpeg"              alt="Mito - Visão com daltonismo"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'> MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Acromatopsia é raríssima</text></svg>'"            />            <div>              <span class="tag-resultado tag-mito"> MITO!</span>              <p>A maioria dos daltônicos enxerga cores, mas tem dificuldade de diferenciar certos tons (como verde e vermelho). A visão totalmente em preto e branco (acromatopsia) é raríssima.</p>            </div>          </div>        </div>      </article>
-      <!-- CARTÃO 2 -->      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 2: Genética e incidência">        <div class="cartao-interno">          <div class="cartao-frente">            <img              src="img/2.jpg"              alt="Genética masculina e feminina"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><text x=\'140\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23f472b6\' font-weight=\'bold\'>XY</text><text x=\'260\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23ec4899\' font-weight=\'bold\'>XX</text><text x=\'200\' y=\'190\' font-family=\'sans-serif\' font-size=\'13\' fill=\'%23fdf2f8\' text-anchor=\'middle\'>Genética do Cromossomo X</text></svg>'"            />            <p>O daltonismo afeta muito mais os homens do que as mulheres.</p>            <span class="dica-clique"> Clique para virar</span>          </div>          <div class="cartao-verso">            <img              src="img/3.jpg"              alt="Verdade - Estatísticas de genética"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'> VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>8% dos Homens vs 0,5% das Mulheres</text></svg>'"            />            <div>              <span class="tag-resultado tag-verdade"> VERDADE!</span>              <p>Como a mutação fica no cromossomo X, homens (XY) precisam de apenas um gene alterado (~8% da população), enquanto mulheres (XX) precisam de dois (~0,5%).</p>            </div>          </div>        </div>      </article>
-      <!-- CARTÃO 3 -->      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 3: Cura e Óculos especiais">        <div class="cartao-interno">          <div class="cartao-frente">            <img              src="img/4.jpg"              alt="Óculos para daltonismo"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><path d=\'M100 120 Q150 80 200 120 Q250 80 300 120\' stroke=\'%23f472b6\' stroke-width=\'5\' fill=\'none\'/><circle cx=\'150\' cy=\'130\' r=\'35\' fill=\'none\' stroke=\'%23ec4899\' stroke-width=\'4\'/><circle cx=\'250\' cy=\'130\' r=\'35\' fill=\'none\' stroke=\'%23ec4899\' stroke-width=\'4\'/></svg>'"            />            <p>Óculos especiais conseguem CURAR o daltonismo completamente.</p>            <span class="dica-clique"> Clique para virar</span>          </div>          <div class="cartao-verso">            <img              src="img/lulu.jpeg"              alt="Mito - Óculos e filtros de luz"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'> MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Óculos apenas ajustam contraste</text></svg>'"            />            <div>              <span class="tag-resultado tag-mito"> MITO!</span>              <p>Não há cura genética. Óculos especiais possuem filtros que aumentam o contraste entre tonalidades, mas não fazem os olhos verem cores inexistentes na retina.</p>            </div>          </div>        </div>      </article>
-      <!-- CARTÃO 4 -->      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 4: Carteira de Motorista">        <div class="cartao-interno">          <div class="cartao-frente">            <img              src="img/iiiii.jpeg"              alt="Semáforo e motorista"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><rect x=\'170\' y=\'40\' width=\'60\' height=\'160\' rx=\'10\' fill=\'%23180914\' stroke=\'%23ec4899\' stroke-width=\'2\'/><circle cx=\'200\' cy=\'70\' r=\'18\' fill=\'%23ef4444\'/><circle cx=\'200\' cy=\'120\' r=\'18\' fill=\'%23eab308\'/><circle cx=\'200\' cy=\'170\' r=\'18\' fill=\'%2322c55e\'/></svg>'"            />            <p>Pessoas com daltonismo são proibidas de tirar carteira de motorista.</p>            <span class="dica-clique"> Clique para virar</span>          </div>          <div class="cartao-verso">            <img              src="img/sasa.jpeg"              alt="Mito - Legislação e trânsito"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'> MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Permitido no Brasil e no mundo</text></svg>'"            />            <div>              <span class="tag-resultado tag-mito"> MITO!</span>              <p>No Brasil e na maioria dos países, daltônicos podem dirigir normalmente, pois memorizam a posição padronizada das luzes dos semáforos.</p>            </div>          </div>        </div>      </article>
-      <!-- CARTÃO 5 -->      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 5: Tipos de Daltonismo">        <div class="cartao-interno">          <div class="cartao-frente">            <img              src="img/okok.jpeg"              alt="Tipos de daltonismo e espectro"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><circle cx=\'150\' cy=\'125\' r=\'40\' fill=\'%23ef4444\' opacity=\'0.7\'/><circle cx=\'200\' cy=\'125\' r=\'40\' fill=\'%2322c55e\' opacity=\'0.7\'/><circle cx=\'250\' cy=\'125\' r=\'40\' fill=\'%233b82f6\' opacity=\'0.7\'/></svg>'"            />            <p>Existem diferentes tipos de daltonismo além da insensibilidade ao verde.</p>            <span class="dica-clique"> Clique para virar</span>          </div>          <div class="cartao-verso">            <img              src="img/aba.jpeg"              alt="Verdade - Protanopia, Deuteranopia e Tritanopia"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3// Função para virar o cartão ao clicar ou pressionar Enter/Espaçofunction virarCartao(cartao) {  cartao.classList.toggle('virado');}
-// Suporte para navegação por tecladodocument.querySelectorAll('.cartao').forEach(card => {  card.addEventListener('keydown', (e) => {    if (e.key === 'Enter' || e.key === ' ') {      e.preventDefault();      virarCartao(card);    }  });});.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'> VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Protanopia, Deuteranopia e Tritanopia</text></svg>'"            />            <div>              <span class="tag-resultado tag-verdade"> VERDADE!</span>              <p>Os tipos principais incluem Protanopia (vermelho), Deuteranopia (verde) e Tritanopia (dificuldade com tons de azul e amarelo).</p>            </div>          </div>        </div>      </article>       <!-- CARTÃO 6 -->      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 2: Genética e incidência">        <div class="cartao-interno">          <div class="cartao-frente">            <img              src="img/2.jpg"              alt="Genética masculina e feminina"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><text x=\'140\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23f472b6\' font-weight=\'bold\'>XY</text><text x=\'260\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23ec4899\' font-weight=\'bold\'>XX</text><text x=\'200\' y=\'190\' font-family=\'sans-serif\' font-size=\'13\' fill=\'%23fdf2f8\' text-anchor=\'middle\'>Genética do Cromossomo X</text></svg>'"            />            <p>O daltonismo afeta muito mais os homens do que as mulheres.</p>            <span class="dica-clique"> Clique para virar</span>          </div>          <div class="cartao-verso">            <img              src="img/3.jpg"              alt="Verdade - Estatísticas de genética"              class="cartao-imagem"              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'> VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>8% dos Homens vs 0,5% das Mulheres</text></svg>'"            />            <div>              <span class="tag-resultado tag-verdade"> VERDADE!</span>              <p>Como a mutação fica no cromossomo X, homens (XY) precisam de apenas um gene alterado (~8% da população), enquanto mulheres (XX) precisam de dois (~0,5%).</p>            </div>          </div>        </div>      </article>
-    </section>  </main>
-  <footer>    <h1>Lara Cardoso Alvino</h1>    <p>Projeto integrador de matérias./p>    <div class="badge-robotica"> Robótica • Física • Programação</div>  </footer>
-  <!-- JavaScript externo -->  <script src="script.js"></script></body></html>
-       
-      
+
+      <!-- CARTÃO 1 -->
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 1: Visão em preto e branco">
+        <div class="cartao-interno">
+          <div class="cartao-frente">
+            <img
+              src="img/computador .jpg"
+              alt="Circuito Arduino e LED RGB da aula de Robótica"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><rect x=\'80\' y=\'60\' width=\'240\' height=\'130\' rx=\'10\' fill=\'%23180914\' stroke=\'%23ec4899\' stroke-width=\'2\'/><circle cx=\'200\' cy=\'125\' r=\'35\' fill=\'%23ec4899\' opacity=\'0.8\'/><text x=\'200\' y=\'130\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23ffffff\' text-anchor=\'middle\' font-weight=\'bold\'>Experimento LED RGB</text><text x=\'200\' y=\'215\' font-family=\'sans-serif\' font-size=\'12\' fill=\'%23f472b6\' text-anchor=\'middle\'>Robótica e Visão de Cores</text></svg>'"
+            />
+            <p>Daltônicos enxergam o mundo apenas em preto e branco.</p>
+            <span class="dica-clique">👆 Clique para virar</span>
+          </div>
+          <div class="cartao-verso">
+            <img
+              src="img/1.0.jpeg"
+              alt="Mito - Visão com daltonismo"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Acromatopsia é raríssima</text></svg>'"
+            />
+            <div>
+              <span class="tag-resultado tag-mito">❌ MITO!</span>
+              <p>A maioria dos daltônicos enxerga cores, mas tem dificuldade de diferenciar certos tons (como verde e vermelho). A visão totalmente em preto e branco (acromatopsia) é raríssima.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARTÃO 2 -->
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 2: Genética e incidência">
+        <div class="cartao-interno">
+          <div class="cartao-frente">
+            <img
+              src="img/2.jpg"
+              alt="Genética masculina e feminina"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><text x=\'140\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23f472b6\' font-weight=\'bold\'>XY</text><text x=\'260\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23ec4899\' font-weight=\'bold\'>XX</text><text x=\'200\' y=\'190\' font-family=\'sans-serif\' font-size=\'13\' fill=\'%23fdf2f8\' text-anchor=\'middle\'>Genética do Cromossomo X</text></svg>'"
+            />
+            <p>O daltonismo afeta muito mais os homens do que as mulheres.</p>
+            <span class="dica-clique">👆 Clique para virar</span>
+          </div>
+          <div class="cartao-verso">
+            <img
+              src="img/3.jpg"
+              alt="Verdade - Estatísticas de genética"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>✅ VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>8% dos Homens vs 0,5% das Mulheres</text></svg>'"
+            />
+            <div>
+              <span class="tag-resultado tag-verdade">✅ VERDADE!</span>
+              <p>Como a mutação fica no cromossomo X, homens (XY) precisam de apenas um gene alterado (~8% da população), enquanto mulheres (XX) precisam de dois (~0,5%).</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARTÃO 3 -->
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 3: Cura e Óculos especiais">
+        <div class="cartao-interno">
+          <div class="cartao-frente">
+            <img
+              src="img/4.jpg"
+              alt="Óculos para daltonismo"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><path d=\'M100 120 Q150 80 200 120 Q250 80 300 120\' stroke=\'%23f472b6\' stroke-width=\'5\' fill=\'none\'/><circle cx=\'150\' cy=\'130\' r=\'35\' fill=\'none\' stroke=\'%23ec4899\' stroke-width=\'4\'/><circle cx=\'250\' cy=\'130\' r=\'35\' fill=\'none\' stroke=\'%23ec4899\' stroke-width=\'4\'/></svg>'"
+            />
+            <p>Óculos especiais conseguem CURAR o daltonismo completamente.</p>
+            <span class="dica-clique">👆 Clique para virar</span>
+          </div>
+          <div class="cartao-verso">
+            <img
+              src="img/lulu.jpeg"
+              alt="Mito - Óculos e filtros de luz"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Óculos apenas ajustam contraste</text></svg>'"
+            />
+            <div>
+              <span class="tag-resultado tag-mito">❌ MITO!</span>
+              <p>Não há cura genética. Óculos especiais possuem filtros que aumentam o contraste entre tonalidades, mas não fazem os olhos verem cores inexistentes na retina.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARTÃO 4 -->
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 4: Carteira de Motorista">
+        <div class="cartao-interno">
+          <div class="cartao-frente">
+            <img
+              src="img/iiiii.jpeg"
+              alt="Semáforo e motorista"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><rect x=\'170\' y=\'40\' width=\'60\' height=\'160\' rx=\'10\' fill=\'%23180914\' stroke=\'%23ec4899\' stroke-width=\'2\'/><circle cx=\'200\' cy=\'70\' r=\'18\' fill=\'%23ef4444\'/><circle cx=\'200\' cy=\'120\' r=\'18\' fill=\'%23eab308\'/><circle cx=\'200\' cy=\'170\' r=\'18\' fill=\'%2322c55e\'/></svg>'"
+            />
+            <p>Pessoas com daltonismo são proibidas de tirar carteira de motorista.</p>
+            <span class="dica-clique">👆 Clique para virar</span>
+          </div>
+          <div class="cartao-verso">
+            <img
+              src="img/sasa.jpeg"
+              alt="Mito - Legislação e trânsito"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Permitido no Brasil e no mundo</text></svg>'"
+            />
+            <div>
+              <span class="tag-resultado tag-mito">❌ MITO!</span>
+              <p>No Brasil e na maioria dos países, daltônicos podem dirigir normalmente, pois memorizam a posição padronizada das luzes dos semáforos.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- CARTÃO 5 -->
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 5: Tipos de Daltonismo">
+        <div class="cartao-interno">
+          <div class="cartao-frente">
+            <img
+              src="img/okok.jpeg"
+              alt="Tipos de daltonismo e espectro"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><circle cx=\'150\' cy=\'125\' r=\'40\' fill=\'%23ef4444\' opacity=\'0.7\'/><circle cx=\'200\' cy=\'125\' r=\'40\' fill=\'%2322c55e\' opacity=\'0.7\'/><circle cx=\'250\' cy=\'125\' r=\'40\' fill=\'%233b82f6\' opacity=\'0.7\'/></svg>'"
+            />
+            <p>Existem diferentes tipos de daltonismo além da insensibilidade ao verde.</p>
+            <span class="dica-clique">👆 Clique para virar</span>
+          </div>
+          <div class="cartao-verso">
+            <img
+              src="img/aba.jpeg"
+              alt="Verdade - Protanopia, Deuteranopia e Tritanopia"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3// Função para virar o cartão ao clicar ou pressionar Enter/Espaço
+function virarCartao(cartao) {
+  cartao.classList.toggle('virado');
+}
+
+// Suporte para navegação por teclado
+document.querySelectorAll('.cartao').forEach(card => {
+  card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      virarCartao(card);
+    }
+  });
+});.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>✅ VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Protanopia, Deuteranopia e Tritanopia</text></svg>'"
+            />
+            <div>
+              <span class="tag-resultado tag-verdade">✅ VERDADE!</span>
+              <p>Os tipos principais incluem Protanopia (vermelho), Deuteranopia (verde) e Tritanopia (dificuldade com tons de azul e amarelo).</p>
+            </div>
+          </div>
+        </div>
+      </article>
+       <!-- CARTÃO 6 -->
+      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 2: Genética e incidência">
+        <div class="cartao-interno">
+          <div class="cartao-frente">
+            <img
+              src="img/2.jpg"
+              alt="Genética masculina e feminina"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><text x=\'140\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23f472b6\' font-weight=\'bold\'>XY</text><text x=\'260\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23ec4899\' font-weight=\'bold\'>XX</text><text x=\'200\' y=\'190\' font-family=\'sans-serif\' font-size=\'13\' fill=\'%23fdf2f8\' text-anchor=\'middle\'>Genética do Cromossomo X</text></svg>'"
+            />
+            <p>O daltonismo afeta muito mais os homens do que as mulheres.</p>
+            <span class="dica-clique">👆 Clique para virar</span>
+          </div>
+          <div class="cartao-verso">
+            <img
+              src="img/3.jpg"
+              alt="Verdade - Estatísticas de genética"
+              class="cartao-imagem"
+              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>✅ VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>8% dos Homens vs 0,5% das Mulheres</text></svg>'"
+            />
+            <div>
+              <span class="tag-resultado tag-verdade">✅ VERDADE!</span>
+              <p>Como a mutação fica no cromossomo X, homens (XY) precisam de apenas um gene alterado (~8% da população), enquanto mulheres (XX) precisam de dois (~0,5%).</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    <h1>Lara Cardoso Alvino</h1>
+    <p>Projeto integrador de matérias./p>
+    <div class="badge-robotica">🔬 Robótica • Física • Programação</div>
+  </footer>
+
+  <!-- JavaScript externo -->
+  <script src="script.js"></script>
+</body>
+</html>
+   
+     
