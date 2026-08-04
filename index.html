@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,88 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     
-    
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #FFF0F5; /* Lavender Blush Pink */
+            color: #4A1525;
+            font-size: 1.125rem; /* 18px base text size for accessibility */
+        }
+        
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+
+        /* 3D Flip Card Styles */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card:hover .flip-card-inner,
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px -5px rgba(236, 64, 122, 0.2), 0 8px 10px -6px rgba(236, 64, 122, 0.1);
+        }
+
+        .flip-card-front {
+            background: linear-gradient(135deg, #ffffff 0%, #FCE4EC 100%);
+            border: 3px solid #F8BBD0;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #F8BBD0 0%, #F48FB1 100%);
+            color: #4A1525;
+            transform: rotateY(180deg);
+            border: 3px solid #EC407A;
+        }
+
+        /* Custom Pink Glassmorphism Cards */
+        .pink-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 2px solid #F8BBD0;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(194, 24, 91, 0.08);
+        }
+
+        /* Flower vision simulation SVG filters */
+        .filter-normal { filter: none; }
+        .filter-protanopia { filter: url(#protanopia-filter); }
+        .filter-deuteranopia { filter: url(#deuteranopia-filter); }
+        .filter-tritanopia { filter: url(#tritanopia-filter); }
+        .filter-achromatopsia { filter: url(#achromatopsia-filter); }
+
+        .active-filter-btn {
+            background-color: #D81B60 !important;
+            color: white !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.4);
+        }
+    </style>
 </head>
 <body class="min-h-screen pb-16">
 
@@ -400,5 +481,3 @@
     </script>
 </body>
 </html>
-
-   
