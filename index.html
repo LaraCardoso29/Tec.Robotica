@@ -1,250 +1,586 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mitos e Verdades sobre o Daltonismo</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entendendo o Daltonismo | Mitos e Verdades</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Importação da fonte Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rosepetals: {
+                            50: '#fff1f2',
+                            100: '#ffe4e6',
+                            200: '#fecdd3',
+                            300: '#fda4af',
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                            700: '#be123c',
+                            800: '#9f1239',
+                            900: '#881337',
+                            950: '#4c0519',
+                        },
+                        floralbg: '#fff8f9',
+                        darkcontrast: '#2e0a14'
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
-  <!-- CSS externo -->
-  <link rel="stylesheet" href="style.css">
+    <style>
+        /* Card Flip 3D Perspective */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        /* Floating Flower Petal Animations */
+        @keyframes floatPetal {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-15px) rotate(10deg); opacity: 1; }
+            100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+        }
+
+        .animate-petal {
+            animation: floatPetal 6s ease-in-out infinite;
+        }
+
+        .animate-petal-slow {
+            animation: floatPetal 9s ease-in-out infinite;
+        }
+
+        /* Color Vision Filters for Simulation */
+        .filter-protanopia { filter: url(#protanopia-filter); }
+        .filter-deuteranopia { filter: url(#deuteranopia-filter); }
+        .filter-tritanopia { filter: url(#tritanopia-filter); }
+        .filter-achromatopsia { filter: grayscale(100%); }
+    </style>
 </head>
-<body>
+<body class="bg-floralbg text-darkcontrast font-sans selection:bg-rosepetals-300 selection:text-rosepetals-950">
 
-  <header class="cabecalho">
-    <h1>Mitos e Verdades sobre o Daltonismo</h1>
-    <nav>
-      <a href="#" class="cabecalho-link">Início</a>
-    </nav>
-  </header>
+    <!-- SVG Filters for Color Blindness Simulation -->
+    <svg class="hidden" aria-hidden="true">
+        <defs>
+            <!-- Protanopia (Red Weakness) -->
+            <filter id="protanopia-filter">
+                <feColorMatrix type="matrix" values="0.567, 0.433, 0, 0, 0  0.558, 0.442, 0, 0, 0  0, 0.242, 0.758, 0, 0  0, 0, 0, 1, 0" />
+            </filter>
+            <!-- Deuteranopia (Green Weakness) -->
+            <filter id="deuteranopia-filter">
+                <feColorMatrix type="matrix" values="0.625, 0.375, 0, 0, 0  0.7, 0.3, 0, 0, 0  0, 0.3, 0.7, 0, 0  0, 0, 0, 1, 0" />
+            </filter>
+            <!-- Tritanopia (Blue Weakness) -->
+            <filter id="tritanopia-filter">
+                <feColorMatrix type="matrix" values="0.95, 0.05, 0, 0, 0  0, 0.433, 0.567, 0, 0  0, 0.475, 0.525, 0, 0  0, 0, 0, 1, 0" />
+            </filter>
+        </defs>
+    </svg>
 
-  <main>
-    <h2 class="subtitulo-projeto">Trabalho de Robótica, Física e Tec. Programação</h2>
-    <p class="descricao-projeto">O daltonismo é uma condição que afeta a percepção das cores.Pessoas com daltonismo tem dificuldade para distinguir algumas cores,principalmente vermelho e verde,embora existam outros tipos.Essa condição é hereditária e não causa perda de visão , apenas altera a forma como as cores são percebidas.O diagnostico pode ser feito por exames oftalmológicos,e, apesar de não ter cura, existem recursos e tecnologias que ajudam as pessoas daltônicas no dia a dia . </p>
-<section>
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-white/80 border-b border-rosepetals-200">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 text-rosepetals-800 font-serif font-bold text-xl md:text-2xl hover:text-rosepetals-600 transition">
+                <i class="fa-solid font-normal fa-spa text-rosepetals-500 text-2xl animate-petal"></i>
+                <span>Visão & Cores</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-rosepetals-900">
+                <a href="#oque-e" class="hover:text-rosepetals-600 transition hover:underline underline-offset-4">O que é?</a>
+                <a href="#tipos" class="hover:text-rosepetals-600 transition hover:underline underline-offset-4">Tipos</a>
+                <a href="#flashcards" class="hover:text-rosepetals-600 transition hover:underline underline-offset-4">Mitos e Verdades</a>
+                <a href="#simulador" class="hover:text-rosepetals-600 transition hover:underline underline-offset-4">Simulador</a>
+            </nav>
 
-      <!-- CARTÃO 1 -->
-      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 1: Visão em preto e branco">
-        <div class="cartao-interno">
-          <div class="cartao-frente">
-            <img
-              src="img/computador .jpg"
-              alt="Circuito Arduino e LED RGB da aula de Robótica"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><rect x=\'80\' y=\'60\' width=\'240\' height=\'130\' rx=\'10\' fill=\'%23180914\' stroke=\'%23ec4899\' stroke-width=\'2\'/><circle cx=\'200\' cy=\'125\' r=\'35\' fill=\'%23ec4899\' opacity=\'0.8\'/><text x=\'200\' y=\'130\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23ffffff\' text-anchor=\'middle\' font-weight=\'bold\'>Experimento LED RGB</text><text x=\'200\' y=\'215\' font-family=\'sans-serif\' font-size=\'12\' fill=\'%23f472b6\' text-anchor=\'middle\'>Robótica e Visão de Cores</text></svg>'"
-            />
-            <p>Daltônicos enxergam o mundo apenas em preto e branco.</p>
-            <span class="dica-clique">👆 Clique para virar</span>
-          </div>
-          <div class="cartao-verso">
-            <img
-              src="img/led acesso.jpeg"
-              alt="Mito - Visão com daltonismo"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Acromatopsia é raríssima</text></svg>'"
-            />
-            <div>
-              <span class="tag-resultado tag-mito">❌ MITO!</span>
-              <p>A maioria dos daltônicos enxerga cores, mas tem dificuldade de diferenciar certos tons (como verde e vermelho). A visão totalmente em preto e branco (acromatopsia) é raríssima.</p>
-            </div>
-          </div>
-        </div>
-      </article>
+            <a href="#flashcards" class="bg-rosepetals-500 hover:bg-rosepetals-600 text-white font-medium px-4 py-2 rounded-full shadow-md shadow-rosepetals-200 text-sm transition flex items-center gap-2">
+                <i class="fa-solid fa-cards-blank"></i>
+                <span>Ver Flashcards</span>
+            </a>
+        </div>
+    </header>
 
-      <!-- CARTÃO 2 -->
-      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 2: Genética e incidência">
-        <div class="cartao-interno">
-          <div class="cartao-frente">
-            <img
-              src="img/Led acendendo .mp4"
-              alt="Genética masculina e feminina"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><text x=\'140\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23f472b6\' font-weight=\'bold\'>XY</text><text x=\'260\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23ec4899\' font-weight=\'bold\'>XX</text><text x=\'200\' y=\'190\' font-family=\'sans-serif\' font-size=\'13\' fill=\'%23fdf2f8\' text-anchor=\'middle\'>Genética do Cromossomo X</text></svg>'"
-            />
-            <p>O daltonismo afeta muito mais os homens do que as mulheres.</p>
-            <span class="dica-clique">👆 Clique para virar</span>
-          </div>
-          <div class="cartao-verso">
-            <img
-              src="img/RGB.mp4"
-              alt="Verdade - Estatísticas de genética"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>✅ VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>8% dos Homens vs 0,5% das Mulheres</text></svg>'"
-            />
-            <div>
-              <span class="tag-resultado tag-verdade">✅ VERDADE!</span>
-              <p>Como a mutação fica no cromossomo X, homens (XY) precisam de apenas um gene alterado (~8% da população), enquanto mulheres (XX) precisam de dois (~0,5%).</p>
-            </div>
-          </div>
-        </div>
-      </article>
+    <!-- Hero & Introduction Section -->
+    <section id="oque-e" class="relative overflow-hidden py-12 md:py-20 bg-gradient-to-b from-rosepetals-100/60 via-rosepetals-50/40 to-floralbg">
+        <!-- Floral Background Decor -->
+        <div class="absolute top-10 left-5 text-rosepetals-300 opacity-40 text-6xl pointer-events-none animate-petal">
+            <i class="fa-solid fa-flower"></i>
+        </div>
+        <div class="absolute bottom-5 right-8 text-rosepetals-300 opacity-30 text-8xl pointer-events-none animate-petal-slow">
+            <i class="fa-solid fa-seedling"></i>
+        </div>
 
-      <!-- CARTÃO 3 -->
-      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 3: Cura e Óculos especiais">
-        <div class="cartao-interno">
-          <div class="cartao-frente">
-            <img
-              src="img/computador .jpg"
-              alt="Óculos para daltonismo"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><path d=\'M100 120 Q150 80 200 120 Q250 80 300 120\' stroke=\'%23f472b6\' stroke-width=\'5\' fill=\'none\'/><circle cx=\'150\' cy=\'130\' r=\'35\' fill=\'none\' stroke=\'%23ec4899\' stroke-width=\'4\'/><circle cx=\'250\' cy=\'130\' r=\'35\' fill=\'none\' stroke=\'%23ec4899\' stroke-width=\'4\'/></svg>'"
-            />
-            <p>Óculos especiais conseguem CURAR o daltonismo completamente.</p>
-            <span class="dica-clique">👆 Clique para virar</span>
-          </div>
-          <div class="cartao-verso">
-            <img
-              src="img/Led acendendo .mp4"
-              alt="Mito - Óculos e filtros de luz"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Óculos apenas ajustam contraste</text></svg>'"
-            />
-            <div>
-              <span class="tag-resultado tag-mito">❌ MITO!</span>
-              <p>Não há cura genética. Óculos especiais possuem filtros que aumentam o contraste entre tonalidades, mas não fazem os olhos verem cores inexistentes na retina.</p>
-            </div>
-          </div>
-        </div>
-      </article>
+        <div class="max-w-5xl mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="inline-flex items-center gap-2 bg-rosepetals-200/80 text-rosepetals-900 text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-4">
+                    <i class="fa-solid fa-rose"></i> Guia Educativo Floral
+                </span>
+                <h1 class="text-3xl md:text-5xl font-serif font-bold text-rosepetals-950 leading-tight mb-4">
+                    Compreendendo o <span class="text-rosepetals-600 underline decoration-rosepetals-300">Daltonismo</span> com Clareza
+                </h1>
+                <p class="text-base md:text-lg text-rosepetals-900/80 leading-relaxed">
+                    O daltonismo é uma condição visual fascinante que altera a forma como percebemos o espectro de cores. Vamos explorar como o mundo se revela através de diferentes olhares.
+                </p>
+            </div>
 
-      <!-- CARTÃO 4 -->
-      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 4: Carteira de Motorista">
-        <div class="cartao-interno">
-          <div class="cartao-frente">
-            <img
-              src="img/iiiii.jpeg"
-              alt="Semáforo e motorista"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><rect x=\'170\' y=\'40\' width=\'60\' height=\'160\' rx=\'10\' fill=\'%23180914\' stroke=\'%23ec4899\' stroke-width=\'2\'/><circle cx=\'200\' cy=\'70\' r=\'18\' fill=\'%23ef4444\'/><circle cx=\'200\' cy=\'120\' r=\'18\' fill=\'%23eab308\'/><circle cx=\'200\' cy=\'170\' r=\'18\' fill=\'%2322c55e\'/></svg>'"
-            />
-            <p>Pessoas com daltonismo são proibidas de tirar carteira de motorista.</p>
-            <span class="dica-clique">👆 Clique para virar</span>
-          </div>
-          <div class="cartao-verso">
-            <img
-              src="img/led acesso.jpeg"
-              alt="Mito - Legislação e trânsito"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>❌ MITO!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Permitido no Brasil e no mundo</text></svg>'"
-            />
-            <div>
-              <span class="tag-resultado tag-mito">❌ MITO!</span>
-              <p>No Brasil e na maioria dos países, daltônicos podem dirigir normalmente, pois memorizam a posição padronizada das luzes dos semáforos.</p>
-            </div>
-          </div>
-        </div>
-      </article>
+            <!-- What is Color Blindness Grid Card -->
+            <div class="bg-white rounded-3xl p-6 md:p-10 shadow-xl shadow-rosepetals-100/50 border border-rosepetals-100 grid md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-7 space-y-4">
+                    <div class="inline-flex items-center gap-2 text-rosepetals-600 font-semibold text-sm">
+                        <i class="fa-solid fa-eye"></i>
+                        <span>O que é o Daltonismo?</span>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-serif font-bold text-rosepetals-950">
+                        Uma variação na percepção cromática
+                    </h2>
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                        O <strong>daltonismo</strong> (ou <i>discromatopsia</i>) é uma condição ocular na maioria das vezes hereditária e genética, caracterizada pela dificuldade em distinguir certas cores, especialmente entre o <strong>vermelho e o verde</strong>, ou, mais raramente, entre o <strong>azul e o amarelo</strong>.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed text-sm md:text-base">
+                        Na nossa retina existem células receptoras chamadas <strong>cones</strong>, encarregadas de identificar as cores primárias de luz (Vermelho, Verde e Azul). Quando um desses grupos de cones funciona de maneira alterada ou está ausente, ocorre o daltonismo.
+                    </p>
+                    <div class="pt-2 flex flex-wrap gap-4">
+                        <div class="flex items-center gap-2 bg-rosepetals-50 px-3 py-2 rounded-xl text-xs font-semibold text-rosepetals-800 border border-rosepetals-200">
+                            <i class="fa-solid fa-dna text-rosepetals-500"></i>
+                            <span>Causa Hereditária</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-rosepetals-50 px-3 py-2 rounded-xl text-xs font-semibold text-rosepetals-800 border border-rosepetals-200">
+                            <i class="fa-solid fa-mars-and-venus text-rosepetals-500"></i>
+                            <span>Mais frequente em Homens</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-rosepetals-50 px-3 py-2 rounded-xl text-xs font-semibold text-rosepetals-800 border border-rosepetals-200">
+                            <i class="fa-solid fa-palette text-rosepetals-500"></i>
+                            <span>Diferentes Intensidades</span>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Info Highlight Box -->
+                <div class="md:col-span-5 bg-gradient-to-br from-rosepetals-500 to-rosepetals-700 rounded-2xl p-6 text-white shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-6 -bottom-6 opacity-20 text-9xl">
+                        <i class="fa-solid fa-fan"></i>
+                    </div>
+                    <h3 class="text-xl font-serif font-bold mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-lightbulb text-yellow-300"></i>
+                        <span>Você Sabia?</span>
+                    </h3>
+                    <p class="text-rosepetals-100 text-sm leading-relaxed mb-4">
+                        Cerca de <strong>8% dos homens</strong> e aproximadamente <strong>0,5% das mulheres</strong> no mundo possuem algum grau de daltonismo.
+                    </p>
+                    <div class="border-t border-rosepetals-400/40 pt-3 text-xs text-rosepetals-100">
+                        <i class="fa-solid fa-circle-info mr-1"></i>
+                        A razão disso está ligada ao cromossomo X. Como os homens possuem apenas um X (XY), qualquer alteração no gene manifesta a condição.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      <!-- CARTÃO 5 -->
-      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 5: Tipos de Daltonismo">
-        <div class="cartao-interno">
-          <div class="cartao-frente">
-            <img
-              src="img/led acesso.jpeg"
-              alt="Tipos de daltonismo e espectro"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><circle cx=\'150\' cy=\'125\' r=\'40\' fill=\'%23ef4444\' opacity=\'0.7\'/><circle cx=\'200\' cy=\'125\' r=\'40\' fill=\'%2322c55e\' opacity=\'0.7\'/><circle cx=\'250\' cy=\'125\' r=\'40\' fill=\'%233b82f6\' opacity=\'0.7\'/></svg>'"
-            />
-            <p>Existem diferentes tipos de daltonismo além da insensibilidade ao verde.</p>
-            <span class="dica-clique">👆 Clique para virar</span>
-          </div>
-          <div class="cartao-verso">
-            <img
-              src="img/Led acendendo .mp4"
-              alt="Verdade - Protanopia, Deuteranopia e Tritanopia"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'httpps://www.w3// Função para virar o cartão ao clicar ou pressionar Enter/Espaço
-function virarCartao(cartao) {
-  cartao.classList.toggle('virado');
-}
+    <!-- Types Section -->
+    <section id="tipos" class="py-12 bg-white border-y border-rosepetals-100">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="text-rosepetals-600 font-semibold text-sm tracking-wider uppercase">Classificação</span>
+                <h2 class="text-2xl md:text-4xl font-serif font-bold text-rosepetals-950 mt-1">
+                    Os Tipos Mais Comuns de Daltonismo
+                </h2>
+            </div>
 
-      <!-- CARTÃO 5 -->
-      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 5: Tipos de Daltonismo">
-        <div class="cartao-interno">
-          <div class="cartao-frente">
-            <img
-              src="img/computador .jpg"
-              alt="Tipos de daltonismo e espectro"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><circle cx=\'150\' cy=\'125\' r=\'40\' fill=\'%23ef4444\' opacity=\'0.7\'/><circle cx=\'200\' cy=\'125\' r=\'40\' fill=\'%2322c55e\' opacity=\'0.7\'/><circle cx=\'250\' cy=\'125\' r=\'40\' fill=\'%233b82f6\' opacity=\'0.7\'/></svg>'"
-            />
-            <p>Existem diferentes tipos de daltonismo além da insensibilidade ao verde.</p>
-            <span class="dica-clique">👆 Clique para virar</span>
-          </div>
-          <div class="cartao-verso">
-            <img
-              src="img/RGB.mp4"
-              alt="Verdade - Protanopia, Deuteranopia e Tritanopia"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'httpasync (params) => {
-  //
-}www.w3// Função para virar o cartão ao clicar ou pressionar Enter/Espaço
-function virarCartao(cartao) {
-  cartao.classList.toggle('virado');
-}
-// Suporte para navegação por teclado
-document.querySelectorAll('.cartao').forEach(card => {
-  card.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      virarCartao(card);
-    }
-  });
-});.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>✅ VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>Protanopia, Deuteranopia e Tritanopia</text></svg>'"
-            />
-            <div>
-              <span class="tag-resultado tag-verdade">✅ VERDADE!</span>
-              <p>Os tipos principais incluem Protanopia (vermelho), Deuteranopia (verde) e Tritanopia (dificuldade com tons de azul e amarelo).</p>
-            </div>
-          </div>
-        </div>
-      </article>
-       <!-- CARTÃO 6 -->
-      <article class="cartao" onclick="virarCartao(this)" tabindex="0" aria-label="Cartão 2: Genética e incidência">
-        <div class="cartao-interno">
-          <div class="cartao-frente">
-            <img
-              src="img/2.jpg"
-              alt="Genética masculina e feminina"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23500724\'/><text x=\'140\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23f472b6\' font-weight=\'bold\'>XY</text><text x=\'260\' y=\'130\' font-family=\'sans-serif\' font-size=\'36\' fill=\'%23ec4899\' font-weight=\'bold\'>XX</text><text x=\'200\' y=\'190\' font-family=\'sans-serif\' font-size=\'13\' fill=\'%23fdf2f8\' text-anchor=\'middle\'>Genética do Cromossomo X</text></svg>'"
-            />
-            <p>O daltonismo afeta muito mais os homens do que as mulheres.</p>
-            <span class="dica-clique">👆 Clique para virar</span>
-          </div>
-          <div class="cartao-verso">
-            <img
-              src="img/3.jpg"
-              alt="Verdade - Estatísticas de genética"
-              class="cartao-imagem"
-              onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'250\' viewBox=\'0 0 400 250\'><rect width=\'100%\' height=\'100%\' fill=\'%23831843\'/><text x=\'200\' y=\'110\' font-family=\'sans-serif\' font-size=\'32\' fill=\'%23ffffff\' font-weight=\'900\' text-anchor=\'middle\'>✅ VERDADE!</text><text x=\'200\' y=\'150\' font-family=\'sans-serif\' font-size=\'14\' fill=\'%23fbcfe8\' text-anchor=\'middle\'>8% dos Homens vs 0,5% das Mulheres</text></svg>'"
-            />
-            <div>
-              <span class="tag-resultado tag-verdade">✅ VERDADE!</span>
-              <p>Como a mutação fica no cromossomo X, homens (XY) precisam de apenas um gene alterado (~8% da população), enquanto mulheres (XX) precisam de dois (~0,5%).</p>
-            </div>
-          </div>
-        </div>
-      </article>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Type 1 -->
+                <div class="bg-rosepetals-50/50 rounded-2xl p-6 border border-rosepetals-200 hover:border-rosepetals-400 transition shadow-sm hover:shadow-md">
+                    <div class="w-10 h-10 rounded-full bg-rosepetals-500 text-white flex items-center justify-center font-bold mb-4">
+                        1
+                    </div>
+                    <h3 class="text-lg font-serif font-bold text-rosepetals-950 mb-2">Deuteranopia / Deuteranomalia</h3>
+                    <p class="text-xs text-rosepetals-700 font-semibold mb-2">Afeta os receptores de Verde</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        É a forma mais comum. A pessoa sente dificuldade em diferenciar tons verdes, vermelhos e marrons.
+                    </p>
+                </div>
 
-    </section>
-  </main>
+                <!-- Type 2 -->
+                <div class="bg-rosepetals-50/50 rounded-2xl p-6 border border-rosepetals-200 hover:border-rosepetals-400 transition shadow-sm hover:shadow-md">
+                    <div class="w-10 h-10 rounded-full bg-rosepetals-500 text-white flex items-center justify-center font-bold mb-4">
+                        2
+                    </div>
+                    <h3 class="text-lg font-serif font-bold text-rosepetals-950 mb-2">Protanopia / Protanomalia</h3>
+                    <p class="text-xs text-rosepetals-700 font-semibold mb-2">Afeta os receptores de Vermelho</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Diminui a sensibilidade ao tom vermelho. O tom vermelho pode ser confundido com preto, escuro ou marrom.
+                    </p>
+                </div>
 
-  <footer>
-    <h1>Lara Cardoso Alvino</h1>
-    <p>Projeto integrador de matérias./p>
-    <div class="badge-robotica">🔬 Robótica • Física • Programação</div>
-  </footer>
+                <!-- Type 3 -->
+                <div class="bg-rosepetals-50/50 rounded-2xl p-6 border border-rosepetals-200 hover:border-rosepetals-400 transition shadow-sm hover:shadow-md sm:col-span-2 lg:col-span-1">
+                    <div class="w-10 h-10 rounded-full bg-rosepetals-500 text-white flex items-center justify-center font-bold mb-4">
+                        3
+                    </div>
+                    <h3 class="text-lg font-serif font-bold text-rosepetals-950 mb-2">Tritanopia & Acromatopsia</h3>
+                    <p class="text-xs text-rosepetals-700 font-semibold mb-2">Azul/Amarelo ou Visão Monocromática</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Formas mais raras. A tritanopia dificulta a visão do azul e amarelo. A acromatopsia é a ausência total de cor (visão em tons de cinza).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- JavaScript externo -->
-  <script src="script.js"></script>
+    <!-- Flashcards Section: Mitos e Verdades -->
+    <section id="flashcards" class="py-16 bg-gradient-to-b from-floralbg to-rosepetals-100/50 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <span class="inline-flex items-center gap-1.5 text-rosepetals-700 bg-rosepetals-200/60 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                    <i class="fa-solid fa-layer-group"></i> Interativo
+                </span>
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-rosepetals-950 mt-2">
+                    Flashcards: Mitos ou Verdades?
+                </h2>
+                <p class="text-gray-600 text-sm md:text-base mt-2">
+                    Clique em qualquer um dos 6 cartões abaixo para virar e descobrir se a afirmação é um <strong>Mito</strong> ou uma <strong>Verdade</strong>!
+                </p>
+            </div>
+
+            <!-- Category Filter Controls -->
+            <div class="flex justify-center gap-2 mb-10">
+                <button id="filter-all" onclick="filterCards('all')" class="card-filter-btn bg-rosepetals-600 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-sm transition">
+                    Todos os 6 Cards
+                </button>
+                <button id="filter-mito" onclick="filterCards('mito')" class="card-filter-btn bg-white hover:bg-rosepetals-100 text-rosepetals-900 px-4 py-2 rounded-full text-xs font-semibold border border-rosepetals-200 transition">
+                    Apenas Mitos
+                </button>
+                <button id="filter-verdade" onclick="filterCards('verdade')" class="card-filter-btn bg-white hover:bg-rosepetals-100 text-rosepetals-900 px-4 py-2 rounded-full text-xs font-semibold border border-rosepetals-200 transition">
+                    Apenas Verdades
+                </button>
+            </div>
+
+            <!-- Grid Container for all 6 Flashcards -->
+            <div id="flashcards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Dynamically rendered via JavaScript -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive Vision Simulator Section -->
+    <section id="simulador" class="py-16 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-rosepetals-600 font-semibold text-xs tracking-wider uppercase">Experiência Interativa</span>
+                <h2 class="text-3xl font-serif font-bold text-rosepetals-950 mt-1">
+                    Simulador de Visão de Cores
+                </h2>
+                <p class="text-gray-600 text-sm mt-2">
+                    Veja como uma foto com flores coloridas é percebida por pessoas com diferentes tipos de daltonismo.
+                </p>
+            </div>
+
+            <!-- Simulator Box -->
+            <div class="bg-rosepetals-50/60 rounded-3xl p-6 md:p-8 border border-rosepetals-200 shadow-lg">
+                <!-- Image Display Area -->
+                <div class="relative w-full h-64 md:h-96 rounded-2xl overflow-hidden shadow-md border-2 border-white mb-6">
+                    <img id="sim-image" src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=1200&q=80" alt="Jardim de Flores Coloridas" class="w-full h-full object-cover transition-all duration-500">
+                    
+                    <div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full font-semibold">
+                        Modo Atual: <span id="sim-mode-name" class="text-rosepetals-300">Visão Normal</span>
+                    </div>
+                </div>
+
+                <!-- Simulation Filter Buttons -->
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                    <button onclick="setSimulation('normal', 'Visão Normal')" class="sim-btn bg-rosepetals-600 text-white py-2.5 px-3 rounded-xl text-xs font-bold transition shadow-sm">
+                        Visão Normal
+                    </button>
+                    <button onclick="setSimulation('protanopia', 'Protanopia (Sem vermelho)')" class="sim-btn bg-white hover:bg-rosepetals-100 text-rosepetals-900 border border-rosepetals-200 py-2.5 px-3 rounded-xl text-xs font-bold transition">
+                        Protanopia
+                    </button>
+                    <button onclick="setSimulation('deuteranopia', 'Deuteranopia (Sem verde)')" class="sim-btn bg-white hover:bg-rosepetals-100 text-rosepetals-900 border border-rosepetals-200 py-2.5 px-3 rounded-xl text-xs font-bold transition">
+                        Deuteranopia
+                    </button>
+                    <button onclick="setSimulation('tritanopia', 'Tritanopia (Sem azul)')" class="sim-btn bg-white hover:bg-rosepetals-100 text-rosepetals-900 border border-rosepetals-200 py-2.5 px-3 rounded-xl text-xs font-bold transition">
+                        Tritanopia
+                    </button>
+                    <button onclick="setSimulation('achromatopsia', 'Acromatopsia (Monocromático)')" class="sim-btn bg-white hover:bg-rosepetals-100 text-rosepetals-900 border border-rosepetals-200 py-2.5 px-3 rounded-xl text-xs font-bold transition col-span-2 sm:col-span-1">
+                        Acromatopsia
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ishihara Test Preview -->
+    <section class="py-12 bg-rosepetals-900 text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <i class="fa-solid fa-circle-dot text-rosepetals-400 text-4xl mb-3 animate-pulse"></i>
+            <h2 class="text-2xl md:text-3xl font-serif font-bold mb-3">
+                Como é feito o Diagnóstico?
+            </h2>
+            <p class="text-rosepetals-100 text-sm md:text-base leading-relaxed max-w-2xl mx-auto mb-6">
+                O diagnóstico mais popular é feito através do <strong>Teste de Ishihara</strong>, composto por placas com círculos coloridos com números no centro formados por pontos de tons específicos.
+            </p>
+            <div class="inline-flex items-center gap-2 bg-rosepetals-800 border border-rosepetals-700 px-4 py-2 rounded-full text-xs text-rosepetals-200">
+                <i class="fa-solid fa-user-doctor text-rosepetals-400"></i>
+                <span>Consulte sempre um médico oftalmologista para exames completos.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-rosepetals-950 text-rosepetals-200 py-10 border-t border-rosepetals-900">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-2 text-white font-serif font-bold text-lg">
+                <i class="fa-solid fa-spa text-rosepetals-400"></i>
+                <span>Visão & Cores — Daltonismo em Foco</span>
+            </div>
+            
+            <p class="text-xs text-rosepetals-400 text-center md:text-right">
+                Desenvolvido com tema floral rosa. Conteúdo educativo e informativo.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Inline JavaScript -->
+    <script>
+        // Flashcard Data Array - 6 Flashcards com Mitos e Verdades
+        const flashcardsData = [
+            {
+                id: 1,
+                type: 'mito',
+                badge: 'Afirmação #1',
+                title: 'Pessoas daltônicas enxergam o mundo totalmente em preto e branco.',
+                verdict: 'MITO!',
+                explanation: 'A grande maioria das pessoas daltônicas enxerga cores normalmente, mas tem dificuldade de distinguir tons específicos (como verde e vermelho). A visão totalmente acromática é extremamente rara.',
+                imgFront: 'https://placehold.co/600x400/ffe4e6/be123c?text=Imagem+Frente+Card+1',
+                imgBack: 'https://placehold.co/600x300/4c0519/fda4af?text=Imagem+Verso+Card+1'
+            },
+            {
+                id: 2,
+                type: 'verdade',
+                badge: 'Afirmação #2',
+                title: 'O daltonismo afeta significativamente mais homens do que mulheres.',
+                verdict: 'VERDADE!',
+                explanation: 'O gene alterado fica no cromossomo X. Como homens são XY, precisam de apenas 1 cromossomo afetado. Mulheres (XX) precisam que ambos os cromossomos tenham a alteração.',
+                imgFront: 'https://placehold.co/600x400/ffe4e6/be123c?text=Imagem+Frente+Card+2',
+                imgBack: 'https://placehold.co/600x300/4c0519/fda4af?text=Imagem+Verso+Card+2'
+            },
+            {
+                id: 3,
+                type: 'mito',
+                badge: 'Afirmação #3',
+                title: 'Existem óculos especiais que curam definitivamente o daltonismo.',
+                verdict: 'MITO!',
+                explanation: 'Lentes com filtros ópticos ajudam no contraste de certas cores, mas NÃO curam a alteração genética nem alteram as células fotorreceptoras da retina.',
+                imgFront: 'https://placehold.co/600x400/ffe4e6/be123c?text=Imagem+Frente+Card+3',
+                imgBack: 'https://placehold.co/600x300/4c0519/fda4af?text=Imagem+Verso+Card+3'
+            },
+            {
+                id: 4,
+                type: 'verdade',
+                badge: 'Afirmação #4',
+                title: 'Daltônicos podem tirar carteira de motorista e dirigir com segurança.',
+                verdict: 'VERDADE!',
+                explanation: 'A posição das luzes nos semáforos é padronizada no mundo todo (Vermelho no topo, Amarelo no meio e Verde na base) e motoristas aprendem a identificar o contraste da iluminação.',
+                imgFront: 'https://placehold.co/600x400/ffe4e6/be123c?text=Imagem+Frente+Card+4',
+                imgBack: 'https://placehold.co/600x300/4c0519/fda4af?text=Imagem+Verso+Card+4'
+            },
+            {
+                id: 5,
+                type: 'verdade',
+                badge: 'Afirmação #5',
+                title: 'Uma pessoa pode adquirir daltonismo ao longo da sua vida adulta.',
+                verdict: 'VERDADE!',
+                explanation: 'Apesar de ser em grande parte genético e hereditário, lesões oculares, derrames, envelhecimento ou doenças como diabetes e esclerose podem resultar em daltonismo adquirido.',
+                imgFront: 'https://placehold.co/600x400/ffe4e6/be123c?text=Imagem+Frente+Card+5',
+                imgBack: 'https://placehold.co/600x300/4c0519/fda4af?text=Imagem+Verso+Card+5'
+            },
+            {
+                id: 6,
+                type: 'mito',
+                badge: 'Afirmação #6',
+                title: 'Todas as pessoas com daltonismo possuem o mesmo grau e tipo de dificuldade.',
+                verdict: 'MITO!',
+                explanation: 'Existem variações como Protanopia (dificuldade com vermelho), Deuteranopia (dificuldade com verde) e Tritanopia (dificuldade com azul), além de graus leves, moderados ou severos.',
+                imgFront: 'https://placehold.co/600x400/ffe4e6/be123c?text=Imagem+Frente+Card+6',
+                imgBack: 'https://placehold.co/600x300/4c0519/fda4af?text=Imagem+Verso+Card+6'
+            }
+        ];
+
+        let currentFilter = 'all';
+        const cardState = {}; // Guarda estado de virado (flipped) de cada card
+
+        function renderCards() {
+            const container = document.getElementById('flashcards-grid');
+            container.innerHTML = '';
+
+            const filteredCards = currentFilter === 'all' 
+                ? flashcardsData 
+                : flashcardsData.filter(card => card.type === currentFilter);
+
+            filteredCards.forEach(card => {
+                const isFlipped = cardState[card.id] || false;
+                
+                const cardWrapper = document.createElement('div');
+                cardWrapper.className = 'perspective-1000 h-[460px] w-full';
+
+                const verdictBadgeStyle = card.type === 'mito'
+                    ? 'bg-amber-500 text-white'
+                    : 'bg-emerald-500 text-white';
+
+                cardWrapper.innerHTML = `
+                    <div id="card-inner-${card.id}" onclick="toggleCardFlip(${card.id})" 
+                         class="transform-style-3d cursor-pointer w-full h-full relative rounded-3xl shadow-lg hover:shadow-2xl transition-transform duration-500 ${isFlipped ? 'rotate-y-180' : ''}">
+                        
+                        <!-- CARD FRONT -->
+                        <div class="backface-hidden absolute inset-0 bg-white rounded-3xl p-6 border-2 border-rosepetals-200 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="bg-rosepetals-100 text-rosepetals-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                        ${card.badge}
+                                    </span>
+                                    <span class="text-rosepetals-400 text-xs font-semibold flex items-center gap-1">
+                                        <i class="fa-solid fa-rotate"></i> Clique para revelar
+                                    </span>
+                                </div>
+
+                                <!-- Imagem da Frente -->
+                                <div class="w-full h-40 bg-rosepetals-50 rounded-2xl border border-rosepetals-200 mb-4 overflow-hidden relative">
+                                    <img src="${card.imgFront}" alt="Imagem do Card ${card.id}" class="w-full h-full object-cover">
+                                </div>
+
+                                <h3 class="text-lg font-serif font-bold text-rosepetals-950 text-center leading-snug">
+                                    "${card.title}"
+                                </h3>
+                            </div>
+
+                            <div class="pt-3 border-t border-rosepetals-100 text-center">
+                                <span class="text-xs text-rosepetals-600 font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-question-circle"></i> Mito ou Verdade?
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- CARD BACK -->
+                        <div class="rotate-y-180 backface-hidden absolute inset-0 bg-gradient-to-br from-rosepetals-900 to-rosepetals-950 text-white rounded-3xl p-6 border-2 border-rosepetals-800 flex flex-col justify-between">
+                            <div>
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="${verdictBadgeStyle} text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider shadow">
+                                        ${card.verdict}
+                                    </span>
+                                    <span class="text-rosepetals-300 text-xs font-semibold flex items-center gap-1">
+                                        <i class="fa-solid fa-rotate"></i> Clique para voltar
+                                    </span>
+                                </div>
+
+                                <!-- Imagem do Verso -->
+                                <div class="w-full h-32 bg-rosepetals-950/60 rounded-2xl border border-rosepetals-700/50 mb-3 overflow-hidden">
+                                    <img src="${card.imgBack}" alt="Explicação Ilustrada ${card.id}" class="w-full h-full object-cover">
+                                </div>
+
+                                <p class="text-rosepetals-100 text-xs md:text-sm leading-relaxed">
+                                    ${card.explanation}
+                                </p>
+                            </div>
+
+                            <div class="pt-2 border-t border-rosepetals-800/80 text-center text-[11px] text-rosepetals-300">
+                                <i class="fa-solid fa-seedling text-rosepetals-400 mr-1"></i> Visão & Cores
+                            </div>
+                        </div>
+
+                    </div>
+                `;
+
+                container.appendChild(cardWrapper);
+            });
+        }
+
+        function toggleCardFlip(id) {
+            cardState[id] = !cardState[id];
+            const cardEl = document.getElementById(`card-inner-${id}`);
+            if (cardEl) {
+                if (cardState[id]) {
+                    cardEl.classList.add('rotate-y-180');
+                } else {
+                    cardEl.classList.remove('rotate-y-180');
+                }
+            }
+        }
+
+        function filterCards(type) {
+            currentFilter = type;
+            renderCards();
+
+            // Update Filter Buttons Styling
+            const buttons = document.querySelectorAll('.card-filter-btn');
+            buttons.forEach(btn => {
+                btn.className = 'card-filter-btn bg-white hover:bg-rosepetals-100 text-rosepetals-900 px-4 py-2 rounded-full text-xs font-semibold border border-rosepetals-200 transition';
+            });
+
+            const activeBtn = document.getElementById(`filter-${type}`);
+            if(activeBtn) {
+                activeBtn.className = 'card-filter-btn bg-rosepetals-600 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-sm transition';
+            }
+        }
+
+        function setSimulation(filterType, name) {
+            const img = document.getElementById('sim-image');
+            const nameLabel = document.getElementById('sim-mode-name');
+
+            // Reset filters
+            img.className = 'w-full h-full object-cover transition-all duration-500';
+
+            if (filterType !== 'normal') {
+                img.classList.add(`filter-${filterType}`);
+            }
+
+            nameLabel.innerText = name;
+
+            // Button highlights
+            const buttons = document.querySelectorAll('.sim-btn');
+            buttons.forEach(btn => {
+                btn.className = 'sim-btn bg-white hover:bg-rosepetals-100 text-rosepetals-900 border border-rosepetals-200 py-2.5 px-3 rounded-xl text-xs font-bold transition';
+            });
+
+            event.currentTarget.className = 'sim-btn bg-rosepetals-600 text-white py-2.5 px-3 rounded-xl text-xs font-bold transition shadow-sm';
+        }
+
+        // Initialize on load
+        window.onload = function() {
+            renderCards();
+        };
+    </script>
 </body>
-</html>
-
+</html> 
+     
    
    
