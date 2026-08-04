@@ -1,2 +1,132 @@
+ <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        pinkbrand: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                            950: '#500724',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
+    <style>
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #db2777;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f472b6;
+        }
+
+        /* Color Blindness Simulation SVG Filters */
+        .filter-protanopia { filter: url('#protanopia-filter'); }
+        .filter-deuteranopia { filter: url('#deuteranopia-filter'); }
+        .filter-tritanopia { filter: url('#tritanopia-filter'); }
+        .filter-achromatopsia { filter: grayscale(100%); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased selection:bg-pink-500 selection:text-white">
+
+    <!-- SVG Filters for Color Blindness Simulation -->
+    <svg class="hidden" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <!-- Protanopia (Vermelho cego) -->
+            <filter id="protanopia-filter">
+                <feColorMatrix type="matrix" values="0.56667 0.43333 0 0 0  0.55833 0.44167 0 0 0  0 0.24167 0.75833 0 0  0 0 0 1 0"/>
+            </filter>
+            <!-- Deuteranopia (Verde cego) -->
+            <filter id="deuteranopia-filter">
+                <feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/>
+            </filter>
+            <!-- Tritanopia (Azul cego) -->
+            <filter id="tritanopia-filter">
+                <feColorMatrix type="matrix" values="0.95 0.05 0 0 0  0 0.43333 0.56667 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-pink-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3.5">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-pink-600 via-rose-500 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-pink-500/30">
+                    <i class="fa-solid font-extrabold text-white text-2xl fa-eye"></i>
+                </div>
+                <div>
+                    <h1 class="font-black text-xl sm:text-2xl leading-tight bg-gradient-to-r from-pink-300 via-rose-200 to-white bg-clip-text text-transparent">
+                        Daltonismo & Espectro RGB
+                    </h1>
+                    <p class="text-sm font-semibold text-pink-300 hidden sm:block">Projeto de Robótica & Biologia Humana</p>
+                </div>
+            </div>
+
+            <!-- Global Color Filter Simulator Switcher -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <span class="text-sm font-bold text-pink-200 hidden md:inline"><i class="fa-solid fa-sliders mr-1.5 text-pink-400"></i> Simular Toda a Tela:</span>
+                <select id="sim-filter" onchange="applyColorFilter(this.value)" class="bg-slate-800 text-sm sm:text-base font-semibold text-pink-100 border-2 border-pink-500/50 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400 cursor-pointer shadow-md">
+                    <option value="none">Visão Normal (RGB)</option>
+                    <option value="deuteranopia">Deuteranopia (Sem Verde)</option>
+                    <option value="protanopia">Protanopia (Sem Vermelho)</option>
+                    <option value="tritanopia">Tritanopia (Sem Azul)</option>
+                    <option value="achromatopsia">Acromatopsia (Preto/Branco)</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- Intro Banner with Large Typography & Pink Theme -->
+        <section class="mb-12 bg-gradient-to-br from-slate-900 via-slate-900 to-pink-950/70 rounded-3xl p-6 sm:p-10 border-2 border-pink-500/30 shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 -mt-10 -mr-10 w-80 h-80 bg-pink-500/15 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-0 left-1/3 -mb-10 w-80 h-80 bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 max-w-4xl">
+                <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-pink-500/20 border border-pink-500/40 text-pink-200 text-sm font-bold mb-5 shadow-sm">
+                    <i class="fa-solid fa-microchip text-pink-400 text-base"></i>
     
