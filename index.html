@@ -1,1 +1,808 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">F
+    <title>Mitos e Verdades sobre Daltonismo | Experimento RGB Arduino</title>
+    <!-- Tailwind CSS -->
+    
+                    <span>Laboratório Prático: Arduino UNO + Potenciômetro + LED RGB</span>
+                </div>
+                
+                <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-6">
+                    A Ciência do <span class="bg-gradient-to-r from-pink-400 via-rose-300 to-fuchsia-300 bg-clip-text text-transparent">Daltonismo</span> e da Luz
+                </h2>
+                
+                <p class="text-slate-200 text-base sm:text-xl leading-relaxed mb-8 font-medium">
+                    O <strong>Daltonismo (Discromatopsia)</strong> é uma condição genética recessiva que altera a forma como a retina interpreta o espectro visível. A visão humana comum utiliza três tipos de células receptoras chamadas <strong>Cones</strong>:
+                    <span class="text-rose-400 font-bold">L (Vermelho)</span>, 
+                    <span class="text-emerald-400 font-bold">M (Verde)</span> e 
+                    <span class="text-sky-400 font-bold">S (Azul)</span>.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                    <div class="p-6 rounded-2xl bg-slate-800/80 border-2 border-pink-500/30 shadow-lg">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-pink-500/20 flex items-center justify-center">
+                                <i class="fa-solid fa-lightbulb text-pink-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-white text-lg sm:text-xl">Conexão com o Arduino RGB</h3>
+                        </div>
+                        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+                            Ao girar o potenciômetro no protoboard, alteramos as voltagens dos pinos R, G e B. A combinação de intensidades produz milhares de cores, replicando exatamente como os cones nos olhos captam comprimentos de onda de luz!
+                        </p>
+                    </div>
 
+                    <div class="p-6 rounded-2xl bg-slate-800/80 border-2 border-rose-500/30 shadow-lg">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 rounded-xl bg-rose-500/20 flex items-center justify-center">
+                                <i class="fa-solid fa-dna text-rose-400 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-white text-lg sm:text-xl">Genética e Cromossomo X</h3>
+                        </div>
+                        <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+                            Os genes para os pigmentos dos cones vermelho e verde localizam-se no cromossomo X. Por isso, a condição afeta estatisticamente muito mais homens do que mulheres.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Types Grid with larger fonts -->
+            <div class="mt-8 border-t-2 border-slate-800/80 pt-8">
+                <h3 class="text-sm sm:text-base font-black uppercase tracking-wider text-pink-300 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group"></i> Os 4 Tipos Principais de Visão Cromática
+                </h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="p-5 rounded-2xl bg-slate-950/80 border-2 border-emerald-500/40 shadow-md hover:border-emerald-400 transition">
+                        <div class="flex items-center space-x-2.5 mb-2">
+                            <span class="w-4 h-4 rounded-full bg-emerald-500 shadow-sm shadow-emerald-500"></span>
+                            <span class="font-bold text-base text-white">Deuteranopia</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 font-medium leading-normal">Ausência de cones verdes. Tipo mais comum; dificulta distinguir verde de vermelho/marrom.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-950/80 border-2 border-rose-500/40 shadow-md hover:border-rose-400 transition">
+                        <div class="flex items-center space-x-2.5 mb-2">
+                            <span class="w-4 h-4 rounded-full bg-rose-500 shadow-sm shadow-rose-500"></span>
+                            <span class="font-bold text-base text-white">Protanopia</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 font-medium leading-normal">Ausência de cones vermelhos. Tons vermelhos parecem escuros, marrons ou esverdeados.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-950/80 border-2 border-sky-500/40 shadow-md hover:border-sky-400 transition">
+                        <div class="flex items-center space-x-2.5 mb-2">
+                            <span class="w-4 h-4 rounded-full bg-sky-500 shadow-sm shadow-sky-500"></span>
+                            <span class="font-bold text-base text-white">Tritanopia</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 font-medium leading-normal">Ausência de cones azuis. Dificultado o contraste entre azul, verde, amarelo e violeta.</p>
+                    </div>
+
+                    <div class="p-5 rounded-2xl bg-slate-950/80 border-2 border-slate-600/40 shadow-md hover:border-slate-400 transition">
+                        <div class="flex items-center space-x-2.5 mb-2">
+                            <span class="w-4 h-4 rounded-full bg-slate-400 shadow-sm shadow-slate-400"></span>
+                            <span class="font-bold text-base text-white">Acromatopsia</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-300 font-medium leading-normal">Visão monocromática (apenas escala de cinza). Condição extremamente rara.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Simulator Section -->
+        <section class="mb-14 bg-slate-900 border-2 border-pink-500/40 rounded-3xl p-6 sm:p-8 shadow-2xl">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 border-b border-slate-800 pb-5">
+                <div>
+                    <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 text-xs font-bold mb-2">
+                        <i class="fa-solid fa-flask"></i> Ferramenta Interativa
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-3">
+                        <i class="fa-solid fa-sliders text-pink-500"></i>
+                        Simulador de LED RGB e Visão Fotorreceptora
+                    </h3>
+                    <p class="text-sm sm:text-base text-slate-300 mt-1">
+                        Ajuste os potenciômetros (R, G, B) do Arduino e veja como cada tipo de visão interpreta a luz resultante em tempo real!
+                    </p>
+                </div>
+
+                <!-- Presets -->
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="setPreset(236, 72, 153)" class="text-xs font-bold bg-pink-600/30 hover:bg-pink-600 text-pink-200 px-3 py-2 rounded-xl border border-pink-500/50 transition">
+                        Roxo Pink
+                    </button>
+                    <button onclick="setPreset(239, 68, 68)" class="text-xs font-bold bg-rose-600/30 hover:bg-rose-600 text-rose-200 px-3 py-2 rounded-xl border border-rose-500/50 transition">
+                        Vermelho
+                    </button>
+                    <button onclick="setPreset(34, 197, 94)" class="text-xs font-bold bg-emerald-600/30 hover:bg-emerald-600 text-emerald-200 px-3 py-2 rounded-xl border border-emerald-500/50 transition">
+                        Verde
+                    </button>
+                    <button onclick="setPreset(59, 130, 246)" class="text-xs font-bold bg-blue-600/30 hover:bg-blue-600 text-blue-200 px-3 py-2 rounded-xl border border-blue-500/50 transition">
+                        Azul
+                    </button>
+                    <button onclick="setPreset(234, 179, 8)" class="text-xs font-bold bg-amber-600/30 hover:bg-amber-600 text-amber-200 px-3 py-2 rounded-xl border border-amber-500/50 transition">
+                        Amarelo
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Sliders (Arduino Potentiometers) -->
+                <div class="lg:col-span-5 bg-slate-950 p-6 rounded-2xl border border-slate-800 space-y-6">
+                    <h4 class="text-base font-bold text-pink-300 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-knob"></i> Potenciômetros Arduino (0 - 255)
+                    </h4>
+
+                    <!-- Red Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-bold text-rose-400 flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-rose-500"></span> Canal Vermelho (R)
+                            </label>
+                            <span id="val-r" class="text-sm font-black bg-rose-950 text-rose-300 px-2.5 py-1 rounded-lg border border-rose-800">236</span>
+                        </div>
+                        <input type="range" id="slider-r" min="0" max="255" value="236" oninput="updateSim()" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-rose-500">
+                    </div>
+
+                    <!-- Green Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-bold text-emerald-400 flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-emerald-500"></span> Canal Verde (G)
+                            </label>
+                            <span id="val-g" class="text-sm font-black bg-emerald-950 text-emerald-300 px-2.5 py-1 rounded-lg border border-emerald-800">72</span>
+                        </div>
+                        <input type="range" id="slider-g" min="0" max="255" value="72" oninput="updateSim()" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                    </div>
+
+                    <!-- Blue Slider -->
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="text-sm font-bold text-sky-400 flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-sky-500"></span> Canal Azul (B)
+                            </label>
+                            <span id="val-b" class="text-sm font-black bg-sky-950 text-sky-300 px-2.5 py-1 rounded-lg border border-sky-800">153</span>
+                        </div>
+                        <input type="range" id="slider-b" min="0" max="255" value="153" oninput="updateSim()" class="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-sky-500">
+                    </div>
+
+                    <div class="pt-2 border-t border-slate-800 text-xs text-slate-400 flex justify-between items-center">
+                        <span>Código HEX: <strong id="hex-code" class="text-pink-300 font-mono text-sm">#EC4899</strong></span>
+                        <span id="rgb-code" class="font-mono text-slate-300">rgb(236, 72, 153)</span>
+                    </div>
+                </div>
+
+                <!-- Live Vision Comparison Panels -->
+                <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-3.5">
+                    
+                    <!-- Normal Vision -->
+                    <div class="bg-slate-950 p-4 rounded-2xl border-2 border-pink-500/50 flex flex-col items-center text-center shadow-lg">
+                        <span class="text-xs font-bold text-pink-300 mb-2">Visão Normal (RGB)</span>
+                        <div id="box-normal" class="w-full h-20 rounded-xl mb-3 shadow-inner transition-colors duration-200 flex items-center justify-center">
+                            <i class="fa-solid fa-lightbulb text-white/40 text-2xl"></i>
+                        </div>
+                        <span class="text-[11px] font-semibold text-slate-400">3 Cones Ativos (L, M, S)</span>
+                    </div>
+
+                    <!-- Deuteranopia -->
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex flex-col items-center text-center shadow-md">
+                        <span class="text-xs font-bold text-emerald-400 mb-2">Deuteranopia</span>
+                        <div id="box-deuteranopia" class="w-full h-20 rounded-xl mb-3 shadow-inner transition-colors duration-200 flex items-center justify-center filter-deuteranopia">
+                            <i class="fa-solid fa-eye-slash text-white/40 text-xl"></i>
+                        </div>
+                        <span class="text-[11px] font-semibold text-slate-400">Sem Cone Verde (M)</span>
+                    </div>
+
+                    <!-- Protanopia -->
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex flex-col items-center text-center shadow-md">
+                        <span class="text-xs font-bold text-rose-400 mb-2">Protanopia</span>
+                        <div id="box-protanopia" class="w-full h-20 rounded-xl mb-3 shadow-inner transition-colors duration-200 flex items-center justify-center filter-protanopia">
+                            <i class="fa-solid fa-eye-slash text-white/40 text-xl"></i>
+                        </div>
+                        <span class="text-[11px] font-semibold text-slate-400">Sem Cone Vermelho (L)</span>
+                    </div>
+
+                    <!-- Tritanopia -->
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex flex-col items-center text-center shadow-md">
+                        <span class="text-xs font-bold text-sky-400 mb-2">Tritanopia</span>
+                        <div id="box-tritanopia" class="w-full h-20 rounded-xl mb-3 shadow-inner transition-colors duration-200 flex items-center justify-center filter-tritanopia">
+                            <i class="fa-solid fa-eye-slash text-white/40 text-xl"></i>
+                        </div>
+                        <span class="text-[11px] font-semibold text-slate-400">Sem Cone Azul (S)</span>
+                    </div>
+
+                    <!-- Achromatopsia -->
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 flex flex-col items-center text-center shadow-md col-span-2 sm:col-span-2">
+                        <span class="text-xs font-bold text-slate-300 mb-2">Acromatopsia (Monocromático)</span>
+                        <div id="box-achromatopsia" class="w-full h-20 rounded-xl mb-3 shadow-inner transition-colors duration-200 flex items-center justify-center filter-achromatopsia">
+                            <i class="fa-solid fa-circle-half-stroke text-white/40 text-xl"></i>
+                        </div>
+                        <span class="text-[11px] font-semibold text-slate-400">Sem Cones Funcionais (Apenas Bastonetes)</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Flashcards Section Header -->
+        <section class="mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+                <h3 class="text-2xl sm:text-3xl font-black text-white flex items-center gap-3">
+                    <i class="fa-solid fa-cards text-pink-500"></i>
+                    Flashcards Interativos: Mitos e Verdades
+                </h3>
+                <p class="text-sm sm:text-base text-slate-300 font-medium mt-1">
+                    Clique no cartão ou no botão "Virar Carta" para revelar se a afirmação é <strong>MITO</strong> ou <strong>VERDADE</strong>.
+                </p>
+            </div>
+            
+            <div class="flex items-center space-x-4 bg-slate-900 border border-pink-500/30 p-2.5 rounded-2xl">
+                <span class="text-sm font-bold text-slate-200">Viradas: <span id="flipped-count" class="text-pink-400 font-black text-base">0</span>/6</span>
+                <button onclick="resetCards()" class="text-sm bg-pink-600 hover:bg-pink-500 text-white font-bold px-4 py-2 rounded-xl transition shadow-md flex items-center space-x-2">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span>Reiniciar</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Grid containing 6 Flashcards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="flashcard-grid">
+
+            <!-- CARD 1 -->
+            <div class="card-container h-[500px] perspective-1000 cursor-pointer" onclick="flipCard(this, 1)">
+                <div class="card-inner relative w-full h-full duration-700 transform-style-3d rounded-3xl shadow-2xl border-2 border-pink-500/30 bg-slate-900 hover:border-pink-500/60 transition-colors">
+                    
+                    <!-- FRENTE CARD 1 -->
+                    <div class="card-front absolute w-full h-full backface-hidden rounded-3xl p-6 flex flex-col justify-between overflow-hidden bg-slate-900">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/40">
+                                    Card 01 • Percepção Visual
+                                </span>
+                                <span class="text-xs font-bold text-pink-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Clique p/ Virar
+                                </span>
+                            </div>
+
+                            <!-- Espaço para Imagem da Carta 1 -->
+                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-4 relative bg-slate-950 border-2 border-dashed border-pink-500/40 flex items-center justify-center">
+                                <img src="1000272869 (1).jpg" onerror="this.onerror=null; this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" alt="Foto Experimento Arduino" class="w-full h-full object-cover rounded-xl">
+                                <div class="hidden flex-col items-center justify-center p-3 text-center">
+                                    <i class="fa-solid fa-image text-pink-400 text-2xl mb-1"></i>
+                                    <span class="text-xs font-bold text-pink-200">Adicione a imagem 1 aqui</span>
+                                    <span class="text-[10px] text-slate-400">substitua o atributo src="sua_foto.jpg"</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-pink-300 border border-pink-500/30">
+                                    <i class="fa-solid fa-camera text-pink-400 mr-1"></i> Foto do Experimento
+                                </div>
+                            </div>
+
+                            <h4 class="font-extrabold text-lg sm:text-xl text-white leading-snug">
+                                Daltônicos enxergam o mundo inteiramente em preto e branco?
+                            </h4>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-medium">Mito ou Verdade?</span>
+                            <button class="text-xs font-extrabold bg-pink-600 hover:bg-pink-500 text-white px-3.5 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                                <span>Descobrir Resposta</span>
+                                <i class="fa-solid fa-rotate text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- VERSO CARD 1 -->
+                    <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-rose-500/50">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-black uppercase tracking-wider px-4 py-2 rounded-full bg-rose-500/20 text-rose-300 border-2 border-rose-500/60 flex items-center gap-2 shadow-lg">
+                                    <i class="fa-solid fa-xmark text-base"></i> É UM MITO!
+                                </span>
+                                <span class="text-xs font-bold text-slate-400">Card 01</span>
+                            </div>
+
+                            <h5 class="text-lg font-black text-white mb-3">Visão em Cores Alterada vs. Escala de Cinza</h5>
+                            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium mb-3">
+                                A imensa maioria das pessoas daltônicas <strong>enxerga cores vibrantes</strong>, mas tem dificuldade em diferenciar tons próximos (especialmente vermelho e verde).
+                            </p>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                                Enxergar estritamente em escala de cinza chama-se <strong>Acromatopsia</strong> e é uma condição raríssima.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <button onclick="flipCardBack(event, this)" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl transition">
+                                <i class="fa-solid fa-arrow-left mr-1"></i> Voltar
+                            </button>
+                            <button onclick="markUnderstood(event, 1)" class="text-xs sm:text-sm bg-pink-600 hover:bg-pink-500 text-white font-bold px-4 py-2 rounded-xl transition shadow-md">
+                                Entendido! <i class="fa-solid fa-check ml-1.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card-container h-[500px] perspective-1000 cursor-pointer" onclick="flipCard(this, 2)">
+                <div class="card-inner relative w-full h-full duration-700 transform-style-3d rounded-3xl shadow-2xl border-2 border-pink-500/30 bg-slate-900 hover:border-pink-500/60 transition-colors">
+                    
+                    <!-- FRENTE CARD 2 -->
+                    <div class="card-front absolute w-full h-full backface-hidden rounded-3xl p-6 flex flex-col justify-between overflow-hidden bg-slate-900">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40">
+                                    Card 02 • Genética Humana
+                                </span>
+                                <span class="text-xs font-bold text-pink-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Clique p/ Virar
+                                </span>
+                            </div>
+
+                            <!-- Espaço para Imagem da Carta 2 -->
+                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-4 relative bg-slate-950 border-2 border-dashed border-pink-500/40 flex items-center justify-center">
+                                <img src="1000272870.jpg" onerror="this.onerror=null; this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" alt="Foto Equipe e Chromebooks" class="w-full h-full object-cover rounded-xl">
+                                <div class="hidden flex-col items-center justify-center p-3 text-center">
+                                    <i class="fa-solid fa-image text-pink-400 text-2xl mb-1"></i>
+                                    <span class="text-xs font-bold text-pink-200">Adicione a imagem 2 aqui</span>
+                                    <span class="text-[10px] text-slate-400">substitua o atributo src="sua_foto.jpg"</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-pink-300 border border-pink-500/30">
+                                    <i class="fa-solid fa-camera text-pink-400 mr-1"></i> Foto do Experimento
+                                </div>
+                            </div>
+
+                            <h4 class="font-extrabold text-lg sm:text-xl text-white leading-snug">
+                                O daltonismo afeta significativamente mais homens do que mulheres?
+                            </h4>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-medium">Mito ou Verdade?</span>
+                            <button class="text-xs font-extrabold bg-pink-600 hover:bg-pink-500 text-white px-3.5 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                                <span>Descobrir Resposta</span>
+                                <i class="fa-solid fa-rotate text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- VERSO CARD 2 -->
+                    <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-emerald-500/50">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-black uppercase tracking-wider px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 border-2 border-emerald-500/60 flex items-center gap-2 shadow-lg">
+                                    <i class="fa-solid fa-check text-base"></i> É VERDADE!
+                                </span>
+                                <span class="text-xs font-bold text-slate-400">Card 02</span>
+                            </div>
+
+                            <h5 class="text-lg font-black text-white mb-3">Hereditariedade no Cromossomo X</h5>
+                            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium mb-3">
+                                Afeta cerca de <strong>8% dos homens</strong> e apenas <strong>0,5% das mulheres</strong>.
+                            </p>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                                Como os homens possuem cromossomos XY, basta um único cromossomo X mutado para apresentar a condição.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <button onclick="flipCardBack(event, this)" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl transition">
+                                <i class="fa-solid fa-arrow-left mr-1"></i> Voltar
+                            </button>
+                            <button onclick="markUnderstood(event, 2)" class="text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl transition shadow-md">
+                                Entendido! <i class="fa-solid fa-check ml-1.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card-container h-[500px] perspective-1000 cursor-pointer" onclick="flipCard(this, 3)">
+                <div class="card-inner relative w-full h-full duration-700 transform-style-3d rounded-3xl shadow-2xl border-2 border-pink-500/30 bg-slate-900 hover:border-pink-500/60 transition-colors">
+                    
+                    <!-- FRENTE CARD 3 -->
+                    <div class="card-front absolute w-full h-full backface-hidden rounded-3xl p-6 flex flex-col justify-between overflow-hidden bg-slate-900">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/40">
+                                    Card 03 • Circuito & Óptica
+                                </span>
+                                <span class="text-xs font-bold text-pink-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Clique p/ Virar
+                                </span>
+                            </div>
+
+                            <!-- Espaço para Imagem da Carta 3 -->
+                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-4 relative bg-slate-950 border-2 border-dashed border-pink-500/40 flex items-center justify-center">
+                                <img src="foto3.jpg" onerror="this.onerror=null; this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" alt="Foto LED RGB Arduino" class="w-full h-full object-cover rounded-xl">
+                                <div class="hidden flex-col items-center justify-center p-3 text-center">
+                                    <i class="fa-solid fa-image text-pink-400 text-2xl mb-1"></i>
+                                    <span class="text-xs font-bold text-pink-200">Adicione a imagem 3 aqui</span>
+                                    <span class="text-[10px] text-slate-400">substitua o atributo src="sua_foto.jpg"</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-pink-300 border border-pink-500/30">
+                                    <i class="fa-solid fa-camera text-pink-400 mr-1"></i> Foto do Experimento
+                                </div>
+                            </div>
+
+                            <h4 class="font-extrabold text-lg sm:text-xl text-white leading-snug">
+                                Circuitos com LED RGB e potenciômetros ajudam a entender a combinação de luzes na retina?
+                            </h4>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-medium">Mito ou Verdade?</span>
+                            <button class="text-xs font-extrabold bg-pink-600 hover:bg-pink-500 text-white px-3.5 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                                <span>Descobrir Resposta</span>
+                                <i class="fa-solid fa-rotate text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- VERSO CARD 3 -->
+                    <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-emerald-500/50">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-black uppercase tracking-wider px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 border-2 border-emerald-500/60 flex items-center gap-2 shadow-lg">
+                                    <i class="fa-solid fa-check text-base"></i> É VERDADE!
+                                </span>
+                                <span class="text-xs font-bold text-slate-400">Card 03</span>
+                            </div>
+
+                            <h5 class="text-lg font-black text-white mb-3">Síntese Aditiva de Cores</h5>
+                            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium mb-3">
+                                O LED RGB recria exatamente a <strong>síntese aditiva</strong> de cor.
+                            </p>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                                Variando os potenciômetros nos pinos R, G e B no Arduino, ajustamos os comprimentos de onda que estimulam os cones L, M e S dos nossos olhos.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <button onclick="flipCardBack(event, this)" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl transition">
+                                <i class="fa-solid fa-arrow-left mr-1"></i> Voltar
+                            </button>
+                            <button onclick="markUnderstood(event, 3)" class="text-xs sm:text-sm bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl transition shadow-md">
+                                Entendido! <i class="fa-solid fa-check ml-1.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="card-container h-[500px] perspective-1000 cursor-pointer" onclick="flipCard(this, 4)">
+                <div class="card-inner relative w-full h-full duration-700 transform-style-3d rounded-3xl shadow-2xl border-2 border-pink-500/30 bg-slate-900 hover:border-pink-500/60 transition-colors">
+                    
+                    <!-- FRENTE CARD 4 -->
+                    <div class="card-front absolute w-full h-full backface-hidden rounded-3xl p-6 flex flex-col justify-between overflow-hidden bg-slate-900">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40">
+                                    Card 04 • CNH & Legislação
+                                </span>
+                                <span class="text-xs font-bold text-pink-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Clique p/ Virar
+                                </span>
+                            </div>
+
+                            <!-- Espaço para Imagem da Carta 4 -->
+                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-4 relative bg-slate-950 border-2 border-dashed border-pink-500/40 flex items-center justify-center">
+                                <img src="foto4.jpg" onerror="this.onerror=null; this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" alt="Foto Semáforo ou Trânsito" class="w-full h-full object-cover rounded-xl">
+                                <div class="hidden flex-col items-center justify-center p-3 text-center">
+                                    <i class="fa-solid fa-image text-pink-400 text-2xl mb-1"></i>
+                                    <span class="text-xs font-bold text-pink-200">Adicione a imagem 4 aqui</span>
+                                    <span class="text-[10px] text-slate-400">substitua o atributo src="sua_foto.jpg"</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-pink-300 border border-pink-500/30">
+                                    <i class="fa-solid fa-camera text-pink-400 mr-1"></i> Foto do Experimento
+                                </div>
+                            </div>
+
+                            <h4 class="font-extrabold text-lg sm:text-xl text-white leading-snug">
+                                Pessoas daltônicas são totalmente proibidas por lei de tirar Carteira de Motorista?
+                            </h4>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-medium">Mito ou Verdade?</span>
+                            <button class="text-xs font-extrabold bg-pink-600 hover:bg-pink-500 text-white px-3.5 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                                <span>Descobrir Resposta</span>
+                                <i class="fa-solid fa-rotate text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- VERSO CARD 4 -->
+                    <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-rose-500/50">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-black uppercase tracking-wider px-4 py-2 rounded-full bg-rose-500/20 text-rose-300 border-2 border-rose-500/60 flex items-center gap-2 shadow-lg">
+                                    <i class="fa-solid fa-xmark text-base"></i> É UM MITO!
+                                </span>
+                                <span class="text-xs font-bold text-slate-400">Card 04</span>
+                            </div>
+
+                            <h5 class="text-lg font-black text-white mb-3">Legislação e Direção</h5>
+                            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium mb-3">
+                                No Brasil, a pessoa daltônica <strong>pode tirar CNH normalmente</strong> em categorias amadoras (A e B).
+                            </p>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                                A regra exige reconhecer a posição fixa das luzes nos semáforos (Vermelho no topo, Amarelo no meio, Verde embaixo).
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <button onclick="flipCardBack(event, this)" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl transition">
+                                <i class="fa-solid fa-arrow-left mr-1"></i> Voltar
+                            </button>
+                            <button onclick="markUnderstood(event, 4)" class="text-xs sm:text-sm bg-pink-600 hover:bg-pink-500 text-white font-bold px-4 py-2 rounded-xl transition shadow-md">
+                                Entendido! <i class="fa-solid fa-check ml-1.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="card-container h-[500px] perspective-1000 cursor-pointer" onclick="flipCard(this, 5)">
+                <div class="card-inner relative w-full h-full duration-700 transform-style-3d rounded-3xl shadow-2xl border-2 border-pink-500/30 bg-slate-900 hover:border-pink-500/60 transition-colors">
+                    
+                    <!-- FRENTE CARD 5 -->
+                    <div class="card-front absolute w-full h-full backface-hidden rounded-3xl p-6 flex flex-col justify-between overflow-hidden bg-slate-900">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/40">
+                                    Card 05 • Tratamento & Óptica
+                                </span>
+                                <span class="text-xs font-bold text-pink-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Clique p/ Virar
+                                </span>
+                            </div>
+
+                            <!-- Espaço para Imagem da Carta 5 -->
+                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-4 relative bg-slate-950 border-2 border-dashed border-pink-500/40 flex items-center justify-center">
+                                <img src="foto5.jpg" onerror="this.onerror=null; this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" alt="Foto Óculos Especial" class="w-full h-full object-cover rounded-xl">
+                                <div class="hidden flex-col items-center justify-center p-3 text-center">
+                                    <i class="fa-solid fa-image text-pink-400 text-2xl mb-1"></i>
+                                    <span class="text-xs font-bold text-pink-200">Adicione a imagem 5 aqui</span>
+                                    <span class="text-[10px] text-slate-400">substitua o atributo src="sua_foto.jpg"</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-pink-300 border border-pink-500/30">
+                                    <i class="fa-solid fa-camera text-pink-400 mr-1"></i> Foto do Experimento
+                                </div>
+                            </div>
+
+                            <h4 class="font-extrabold text-lg sm:text-xl text-white leading-snug">
+                                Óculos especiais para daltonismo curam a visão permanentemente?
+                            </h4>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-medium">Mito ou Verdade?</span>
+                            <button class="text-xs font-extrabold bg-pink-600 hover:bg-pink-500 text-white px-3.5 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                                <span>Descobrir Resposta</span>
+                                <i class="fa-solid fa-rotate text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- VERSO CARD 5 -->
+                    <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-rose-500/50">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-black uppercase tracking-wider px-4 py-2 rounded-full bg-rose-500/20 text-rose-300 border-2 border-rose-500/60 flex items-center gap-2 shadow-lg">
+                                    <i class="fa-solid fa-xmark text-base"></i> É UM MITO!
+                                </span>
+                                <span class="text-xs font-bold text-slate-400">Card 05</span>
+                            </div>
+
+                            <h5 class="text-lg font-black text-white mb-3">Filtros Cromáticos vs. Cura</h5>
+                            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium mb-3">
+                                Óculos com filtros apenas <strong>bloqueiam ondas de sobreposição</strong> para filtrar a luz e aumentar o contraste.
+                            </p>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                                Eles não restauram nem reconstroem pigmentos nos cones retinianos. Ao retirar os óculos, a visão retorna ao normal.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <button onclick="flipCardBack(event, this)" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl transition">
+                                <i class="fa-solid fa-arrow-left mr-1"></i> Voltar
+                            </button>
+                            <button onclick="markUnderstood(event, 5)" class="text-xs sm:text-sm bg-pink-600 hover:bg-pink-500 text-white font-bold px-4 py-2 rounded-xl transition shadow-md">
+                                Entendido! <i class="fa-solid fa-check ml-1.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="card-container h-[500px] perspective-1000 cursor-pointer" onclick="flipCard(this, 6)">
+                <div class="card-inner relative w-full h-full duration-700 transform-style-3d rounded-3xl shadow-2xl border-2 border-pink-500/30 bg-slate-900 hover:border-pink-500/60 transition-colors">
+                    
+                    <!-- FRENTE CARD 6 -->
+                    <div class="card-front absolute w-full h-full backface-hidden rounded-3xl p-6 flex flex-col justify-between overflow-hidden bg-slate-900">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/40">
+                                    Card 06 • Diagnóstico & Graus
+                                </span>
+                                <span class="text-xs font-bold text-pink-400 flex items-center gap-1">
+                                    <i class="fa-solid fa-arrows-rotate"></i> Clique p/ Virar
+                                </span>
+                            </div>
+
+                            <!-- Espaço para Imagem da Carta 6 -->
+                            <div class="w-full h-44 rounded-2xl overflow-hidden mb-4 relative bg-slate-950 border-2 border-dashed border-pink-500/40 flex items-center justify-center">
+                                <img src="foto6.jpg" onerror="this.onerror=null; this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden');" alt="Foto Teste de Ishihara" class="w-full h-full object-cover rounded-xl">
+                                <div class="hidden flex-col items-center justify-center p-3 text-center">
+                                    <i class="fa-solid fa-image text-pink-400 text-2xl mb-1"></i>
+                                    <span class="text-xs font-bold text-pink-200">Adicione a imagem 6 aqui</span>
+                                    <span class="text-[10px] text-slate-400">substitua o atributo src="sua_foto.jpg"</span>
+                                </div>
+                                <div class="absolute top-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-pink-300 border border-pink-500/30">
+                                    <i class="fa-solid fa-camera text-pink-400 mr-1"></i> Foto do Experimento
+                                </div>
+                            </div>
+
+                            <h4 class="font-extrabold text-lg sm:text-xl text-white leading-snug">
+                                Todos os daltônicos possuem exatamente o mesmo grau e confundem as mesmas cores?
+                            </h4>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800 flex justify-between items-center">
+                            <span class="text-xs text-slate-400 font-medium">Mito ou Verdade?</span>
+                            <button class="text-xs font-extrabold bg-pink-600 hover:bg-pink-500 text-white px-3.5 py-2 rounded-xl transition shadow flex items-center gap-1.5">
+                                <span>Descobrir Resposta</span>
+                                <i class="fa-solid fa-rotate text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- VERSO CARD 6 -->
+                    <div class="card-back absolute w-full h-full backface-hidden rotate-y-180 rounded-3xl p-6 sm:p-7 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-slate-950 border-2 border-rose-500/50">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="text-sm font-black uppercase tracking-wider px-4 py-2 rounded-full bg-rose-500/20 text-rose-300 border-2 border-rose-500/60 flex items-center gap-2 shadow-lg">
+                                    <i class="fa-solid fa-xmark text-base"></i> É UM MITO!
+                                </span>
+                                <span class="text-xs font-bold text-slate-400">Card 06</span>
+                            </div>
+
+                            <h5 class="text-lg font-black text-white mb-3">Variação de Severidade</h5>
+                            <p class="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium mb-3">
+                                Existem <strong>anomalias leves, moderadas e acentuadas</strong>.
+                            </p>
+                            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-medium">
+                                A percepção depende de qual cone é afetado: protanopes alteram a visão do vermelho, deuteranopes do verde e tritanopes do azul.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex justify-between items-center">
+                            <button onclick="flipCardBack(event, this)" class="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold px-3 py-2 rounded-xl transition">
+                                <i class="fa-solid fa-arrow-left mr-1"></i> Voltar
+                            </button>
+                            <button onclick="markUnderstood(event, 6)" class="text-xs sm:text-sm bg-pink-600 hover:bg-pink-500 text-white font-bold px-4 py-2 rounded-xl transition shadow-md">
+                                Entendido! <i class="fa-solid fa-check ml-1.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 border-t border-pink-900/40 py-8 text-center text-sm text-pink-200/70">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p class="font-bold text-pink-300">Projeto Didático sobre Daltonismo • Laboratório de Robótica & Arduino UNO</p>
+            <p class="text-xs text-slate-400">Desenvolvido com HTML, Tailwind CSS & JavaScript</p>
+        </div>
+    </footer>
+
+    <script>
+        // Track unique flipped cards
+        const flippedCards = new Set();
+        const understoodCards = new Set();
+
+        /**
+         * Virar a carta ao clicar no container
+         */
+        function flipCard(container, cardId) {
+            const inner = container.querySelector('.card-inner');
+            const isFlipped = inner.classList.contains('rotate-y-180');
+            
+            if (isFlipped) {
+                inner.classList.remove('rotate-y-180');
+            } else {
+                inner.classList.add('rotate-y-180');
+                flippedCards.add(cardId);
+                updateCounter();
+            }
+        }
+
+        /**
+         * Botão auxiliar para desvirar a carta
+         */
+        function flipCardBack(event, buttonEl) {
+            event.stopPropagation();
+            const container = buttonEl.closest('.card-container');
+            const inner = container.querySelector('.card-inner');
+            inner.classList.remove('rotate-y-180');
+        }
+
+        /**
+         * Ação do botão "Entendido!" no verso da carta
+         */
+        function markUnderstood(event, cardId) {
+            event.stopPropagation();
+            understoodCards.add(cardId);
+            const container = event.currentTarget.closest('.card-container');
+            const inner = container.querySelector('.card-inner');
+            inner.classList.remove('rotate-y-180');
+        }
+
+        /**
+         * Atualiza o contador de cartas viradas na interface
+         */
+        function updateCounter() {
+            const counter = document.getElementById('flipped-count');
+            if (counter) {
+                counter.textContent = flippedCards.size;
+            }
+        }
+
+        /**
+         * Desvira todas as cartas para o estado inicial
+         */
+        function resetCards() {
+            const allInners = document.querySelectorAll('.card-inner');
+            allInners.forEach(inner => {
+                inner.classList.remove('rotate-y-180');
+            });
+            flippedCards.clear();
+            understoodCards.clear();
+            updateCounter();
+        }
+
+        /**
+         * Aplica os filtros SVG de simulação de daltonismo no corpo inteiro
+         */
+        function applyColorFilter(filterName) {
+            const body = document.body;
+            body.classList.remove('filter-protanopia', 'filter-deuteranopia', 'filter-tritanopia', 'filter-achromatopsia');
+            
+            if (filterName !== 'none') {
+                body.classList.add('filter-' + filterName);
+            }
+        }
+
+        /**
+         * Atualiza o Simulador de LED RGB com base nos Sliders
+         */
+        function updateSim() {
+            const r = parseInt(document.getElementById('slider-r').value);
+            const g = parseInt(document.getElementById('slider-g').value);
+            const b = parseInt(document.getElementById('slider-b').value);
+
+            // Update text values
+            document.getElementById('val-r').textContent = r;
+            document.getElementById('val-g').textContent = g;
+            document.getElementById('val-b').textContent = b;
+
+            // Hex conversion
+            const hexR = r.toString(16).padStart(2, '0');
+            const hexG = g.toString(16).padStart(2, '0');
+            const hexB = b.toString(16).padStart(2, '0');
+            const hexString = `#${hexR}${hexG}${hexB}`.toUpperCase();
+
+            document.getElementById('hex-code').textContent = hexString;
+            document.getElementById('rgb-code').textContent = `rgb(${r}, ${g}, ${b})`;
+
+            // Color string
+            const colorRgb = `rgb(${r}, ${g}, ${b})`;
+
+            // Apply background color to all vision simulation boxes
+            const boxes = ['box-normal', 'box-deuteranopia', 'box-protanopia', 'box-tritanopia', 'box-achromatopsia'];
+            boxes.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.style.backgroundColor = colorRgb;
+                }
+            });
+        }
+
+        /**
+         * Define um valor pré-configurado de cor no simulador
+         */
+        function setPreset(r, g, b) {
+            document.getElementById('slider-r').value = r;
+            document.getElementById('slider-g').value = g;
