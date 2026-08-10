@@ -1,152 +1,62 @@
-
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daltonismo - Mitos, Verdades e Simulador</title>
-    <!-- Tailwind CSS for utility styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-            background-color: #FFF0F5; /* Lavender Blush Pink */
-            color: #4A1525;
-            font-size: 1.125rem; /* 18px base text size for accessibility */
-        }
-        
-        h1, h2, h3, .font-heading {
-            font-family: 'Fredoka', cursive, sans-serif;
-        }
-
-        /* 3D Flip Card Styles */
-        .perspective-1000 {
-            perspective: 1000px;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-            transform-style: preserve-3d;
-            cursor: pointer;
-        }
-
-        .flip-card:hover .flip-card-inner,
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 1.5rem;
-            box-shadow: 0 10px 25px -5px rgba(236, 64, 122, 0.2), 0 8px 10px -6px rgba(236, 64, 122, 0.1);
-        }
-
-        .flip-card-front {
-            background: linear-gradient(135deg, #ffffff 0%, #FCE4EC 100%);
-            border: 3px solid #F8BBD0;
-        }
-
-        .flip-card-back {
-            background: linear-gradient(135deg, #F8BBD0 0%, #F48FB1 100%);
-            color: #4A1525;
-            transform: rotateY(180deg);
-            border: 3px solid #EC407A;
-        }
-
-        /* Custom Pink Glassmorphism Cards */
-        .pink-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            border: 2px solid #F8BBD0;
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 20px rgba(194, 24, 91, 0.08);
-        }
-
-        /* Flower vision simulation SVG filters */
-        .filter-normal { filter: none; }
-        .filter-protanopia { filter: url(#protanopia-filter); }
-        .filter-deuteranopia { filter: url(#deuteranopia-filter); }
-        .filter-tritanopia { filter: url(#tritanopia-filter); }
-        .filter-achromatopsia { filter: url(#achromatopsia-filter); }
-
-        .active-filter-btn {
-            background-color: #D81B60 !important;
-            color: white !important;
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.4);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body class="min-h-screen pb-16">
 
-    <!-- SVG Filters for Color Blindness Simulation -->
     <svg style="display: none;">
         <defs>
-            <!-- Protanopia (Red-Blind) Matrix -->
             <filter id="protanopia-filter">
                 <feColorMatrix type="matrix" values="
-                    0.56667  0.43333  0.00000  0  0
-                    0.55833  0.44167  0.00000  0  0
-                    0.00000  0.24167  0.75833  0  0
-                    0        0        0        1  0" />
+                    0.56667 0.43333 0.00000 0 0
+                    0.55833 0.44167 0.00000 0 0
+                    0.00000 0.24167 0.75833 0 0
+                    0 0 0 1 0" />
             </filter>
-            <!-- Deuteranopia (Green-Blind) Matrix -->
             <filter id="deuteranopia-filter">
                 <feColorMatrix type="matrix" values="
-                    0.62515  0.37485  0.00000  0  0
-                    0.70000  0.30000  0.00000  0  0
-                    0.00000  0.30000  0.70000  0  0
-                    0        0        0        1  0" />
+                    0.62515 0.37485 0.00000 0 0
+                    0.70000 0.30000 0.00000 0 0
+                    0.00000 0.30000 0.70000 0 0
+                    0 0 0 1 0" />
             </filter>
-            <!-- Tritanopia (Blue-Blind) Matrix -->
             <filter id="tritanopia-filter">
                 <feColorMatrix type="matrix" values="
-                    0.95000  0.05000  0.00000  0  0
-                    0.00000  0.43333  0.56667  0  0
-                    0.00000  0.47500  0.52500  0  0
-                    0        0        0        1  0" />
+                    0.95000 0.05000 0.00000 0 0
+                    0.00000 0.43333 0.56667 0 0
+                    0.00000 0.47500 0.52500 0 0
+                    0 0 0 1 0" />
             </filter>
-            <!-- Achromatopsia (Monochrome) Matrix -->
             <filter id="achromatopsia-filter">
                 <feColorMatrix type="matrix" values="
-                    0.299  0.587  0.114  0  0
-                    0.299  0.587  0.114  0  0
-                    0.299  0.587  0.114  0  0
-                    0      0      0      1  0" />
+                    0.299 0.587 0.114 0 0
+                    0.299 0.587 0.114 0 0
+                    0.299 0.587 0.114 0 0
+                    0 0 0 1 0" />
             </filter>
         </defs>
     </svg>
 
-    <!-- Top Header -->
     <header class="bg-gradient-to-r from-pink-300 via-pink-400 to-rose-400 text-white py-8 px-4 shadow-lg text-center rounded-b-3xl">
         <div class="max-w-4xl mx-auto">
             <span class="inline-block bg-white/30 text-white text-base px-4 py-1 rounded-full font-bold mb-2 uppercase tracking-wide">Pesquisa Completa</span>
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-wide mb-3 drop-shadow-sm">
-                🌸 Trabalho integrador de matérias.
+                🌸 Trabalho Integrador
             </h1>
             <p class="text-xl md:text-2xl font-semibold opacity-95 max-w-2xl mx-auto">
-                Oque é?, tipos , causas ...
+                O que é, tipos, causas e projetos...
             </p>
         </div>
     </header>
 
     <main class="max-w-5xl mx-auto px-4 mt-8 space-y-12">
 
-        <!-- Resumo Inicial & Cones -->
         <section class="pink-card p-6 md:p-8">
             <h2 class="text-3xl md:text-4xl font-bold text-pink-700 mb-4 flex items-center gap-3">
                 <span>👁️</span> O que é o Daltonismo?
@@ -154,7 +64,6 @@
             <p class="text-lg md:text-xl text-gray-800 leading-relaxed mb-6">
                 O <strong>daltonismo</strong> é uma condição que altera a percepção das cores. Pessoas daltônicas têm dificuldade para diferenciar algumas cores porque os <strong>cones da retina</strong> (as células responsáveis pela visão das cores) não funcionam corretamente. Na maioria dos casos é hereditário, mas pode ser provocado por doenças ou lesões.
             </p>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                 <div class="bg-red-100 border-2 border-red-300 p-5 rounded-2xl text-center">
                     <div class="w-10 h-10 bg-red-500 rounded-full mx-auto mb-2 shadow"></div>
@@ -174,7 +83,6 @@
             </div>
         </section>
 
-        <!-- Interactive Flower Vision Simulator -->
         <section class="pink-card p-6 md:p-8 text-center border-4 border-pink-300">
             <span class="bg-pink-200 text-pink-800 text-sm font-bold px-3 py-1 rounded-full uppercase">Experiência Interativa</span>
             <h2 class="text-3xl md:text-4xl font-bold text-pink-800 mt-2 mb-3">
@@ -184,7 +92,6 @@
                 Clique nos botões abaixo para ver como uma flor bem colorida é enxergada por pessoas com diferentes tipos de daltonismo!
             </p>
 
-            <!-- Buttons Grid -->
             <div class="flex flex-wrap justify-center gap-3 mb-8">
                 <button onclick="changeVision('normal', this)" class="filter-btn active-filter-btn px-5 py-3 rounded-xl font-bold text-lg bg-pink-100 text-pink-800 hover:bg-pink-200 transition-all border border-pink-300">
                     👁️ Visão Normal
@@ -203,22 +110,14 @@
                 </button>
             </div>
 
-            <!-- Flower SVG Box -->
             <div class="relative bg-white/90 p-8 rounded-3xl border-2 border-pink-200 max-w-md mx-auto shadow-inner">
                 <div id="flower-container" class="filter-normal transition-all duration-500 flex justify-center items-center">
-                    <!-- High Contrast SVG Flower -->
                     <svg width="260" height="260" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Background Sky/Grass Context -->
                         <circle cx="100" cy="100" r="95" fill="#E0F7FA"/>
-                        
-                        <!-- Stem and Leaves -->
                         <path d="M100,100 Q90,150 100,190" stroke="#2E7D32" stroke-width="10" fill="none" stroke-linecap="round"/>
-                        <!-- Green Leaf Left -->
                         <path d="M96,140 Q60,130 70,115 Q90,120 96,140" fill="#4CAF50" stroke="#1B5E20" stroke-width="2"/>
-                        <!-- Green Leaf Right -->
                         <path d="M102,155 Q140,145 130,130 Q110,135 102,155" fill="#388E3C" stroke="#1B5E20" stroke-width="2"/>
 
-                        <!-- Flower Petals (Vibrant Red) -->
                         <g fill="#E53935" stroke="#B71C1C" stroke-width="2">
                             <circle cx="100" cy="60" r="28"/>
                             <circle cx="140" cy="100" r="28"/>
@@ -230,7 +129,6 @@
                             <circle cx="72" cy="128" r="26"/>
                         </g>
 
-                        <!-- Inner Accent Petals (Pink/Purple) -->
                         <g fill="#FF4081">
                             <circle cx="100" cy="72" r="16"/>
                             <circle cx="128" cy="100" r="16"/>
@@ -238,20 +136,16 @@
                             <circle cx="72" cy="100" r="16"/>
                         </g>
 
-                        <!-- Center (Bright Yellow) -->
                         <circle cx="100" cy="100" r="24" fill="#FFEB3B" stroke="#F57F17" stroke-width="3"/>
                         <circle cx="100" cy="100" r="18" fill="#FBC02D"/>
                     </svg>
                 </div>
-                
-                <!-- Description Box -->
                 <div id="vision-description" class="mt-4 p-3 bg-pink-50 rounded-xl text-pink-900 font-semibold text-lg">
-                    Visão Normal: Todas as cores (petalas vermelhas, folhas verdes e centro amarelo) são percebidas vivas.
+                    Visão Normal: Todas as cores (pétalas vermelhas, folhas verdes e centro amarelo) são percebidas vivas.
                 </div>
             </div>
         </section>
 
-        <!-- Flash Cards: Mitos ou Verdades -->
         <section>
             <div class="text-center mb-6">
                 <span class="bg-pink-200 text-pink-800 text-sm font-bold px-3 py-1 rounded-full uppercase">Jogo de Cartas</span>
@@ -263,11 +157,7 @@
                 </p>
             </div>
 
-            <!-- Flashcards Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-              
-                <!-- Card 1 -->
                 <div class="flip-card perspective-1000 h-64" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -283,11 +173,8 @@
                             </p>
                         </div>
                     </div>
-               </div>
+                </div>
 
-
-                
-                <!-- Card 2 -->
                 <div class="flip-card perspective-1000 h-64" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -305,9 +192,6 @@
                     </div>
                 </div>
 
-              
-                
-                <!-- Card 3 -->
                 <div class="flip-card perspective-1000 h-64" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -325,9 +209,6 @@
                     </div>
                 </div>
 
-               
-                
-                <!-- Card 4 -->
                 <div class="flip-card perspective-1000 h-64" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
@@ -345,15 +226,12 @@
                     </div>
                 </div>
 
-              
-                
-                <!-- Card 5 -->
                 <div class="flip-card perspective-1000 h-64" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <span class="text-4xl mb-2">📜</span>
                             <h3 class="text-2xl font-bold text-pink-800">Mito ou Verdade?</h3>
-                            <p class="text-lg font-semibold text-gray-700 mt-2">"O nome 'Daltonismo' veio de um cientista que era daltônico."</p>
+                            <p class="text-lg font-semibold text-gray-700 mt-2">"O nome 'Daltonismo' veio de um cientista daltônico."</p>
                             <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique para virar 🔄</span>
                         </div>
                         <div class="flip-card-back">
@@ -365,16 +243,13 @@
                     </div>
                 </div>
 
-              
-                
-                <!-- Card 6 -->
                 <div class="flip-card perspective-1000 h-64" onclick="this.classList.toggle('flipped')">
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <span class="text-4xl mb-2">🎨</span>
                             <h3 class="text-2xl font-bold text-pink-800">Mito ou Verdade?</h3>
                             <p class="text-lg font-semibold text-gray-700 mt-2">"O tipo mais comum é a confusão entre Vermelho e Verde."</p>
-                            <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique me para virar 🔄</span>
+                            <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique para virar 🔄</span>
                         </div>
                         <div class="flip-card-back">
                             <span class="text-3xl font-extrabold uppercase tracking-widest bg-green-600 text-white px-4 py-1 rounded-full mb-2">✅ VERDADE</span>
@@ -384,14 +259,10 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
-        <!-- Tipos, Sintomas, Diagnóstico & Curiosidades -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            
-            <!-- Tipos de Daltonismo -->
             <section class="pink-card p-6 md:p-8">
                 <h2 class="text-2xl md:text-3xl font-bold text-pink-700 mb-4 flex items-center gap-2">
                     <span>📊</span> Principais Tipos
@@ -416,7 +287,6 @@
                 </ul>
             </section>
 
-            <!-- Diagnóstico e Apoio -->
             <section class="pink-card p-6 md:p-8 flex flex-col justify-between">
                 <div>
                     <h2 class="text-2xl md:text-3xl font-bold text-pink-700 mb-4 flex items-center gap-2">
@@ -438,44 +308,50 @@
                     <p class="font-bold text-pink-900 text-lg">Curiosidade</p>
                     <p class="text-base text-pink-800">Pessoas daltônicas costumam desenvolver excelente sensibilidade ao contraste de luz e textura!</p>
                 </div>
-            </section> 
-            <section class="pink-card p-6 md:p-8 flex flex-col center">
-                <div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-pink-700 mb-4 flex items-center gap-2">
-                        <span>🩺</span> Relacionando com as aulas de robótica- LED RGB , projeto Arco-irís
-                    </h2>
-                    <p class="text-lg text-gray-800 mb-4">
-                      <p class="text-lg text-gray-800 mb-4">
-  Por meio desse projeto, é possível compreender que pessoas com daltonismo percebem as <strong>cores de forma diferente</strong>.
-</p>
+            </section>
 
-<!-- IMAGEM 1 -->
-<div class="flex justify-center my-4">
-  <img src="img/computador.jpg" alt="estudos" class="max-w-full h-auto rounded-lg">
-</div>
+            <section class="pink-card p-6 md:p-8 md:col-span-2">
+                <h2 class="text-2xl md:text-3xl font-bold text-pink-700 mb-4 flex items-center gap-2">
+                    <span>🤖</span> Relacionando com as aulas de Robótica: LED RGB e Projeto Arco-Íris
+                </h2>
+                
+                <p class="text-lg text-gray-800 mb-4">
+                    Por meio desse projeto, é possível compreender como o olho humano interpreta a mistura de cores primárias e como pessoas com daltonismo percebem as <strong>cores de forma diferente</strong>.
+                </p>
 
-<!-- IMAGEM 2 -->
-<div class="flex justify-center my-4">
-  <img src="img/Led acendendo.mp4" alt="led acendendo" class="max-w-full h-auto rounded-lg">
-</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
+                    <div class="flex flex-col items-center">
+                        <p class="font-semibold text-pink-900 mb-2">Estudos do Projeto</p>
+                        <img src="img/computador.jpg" alt="Estudos do projeto de robótica" class="max-w-full h-auto rounded-xl border-2 border-pink-300 shadow">
+                    </div>
 
-<h3 class="font-bold text-xl text-pink-800 mt-4 mb-2">Como funciona?:</h3>
+                    <div class="flex flex-col items-center">
+                        <p class="font-semibold text-pink-900 mb-2">LED Acendendo</p>
+                        <video controls class="max-w-full h-auto rounded-xl border-2 border-pink-300 shadow">
+                            <source src="img/Led acendendo.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
+                        </video>
+                    </div>
 
-<ul class="list-disc list-inside space-y-2 text-lg text-gray-800 mb-4">
-  <li>O arduino controla a troca de cores do LED RGB, formando a sequencia do arco-íris.</li>
-</ul>
+                    <div class="flex flex-col items-center">
+                        <p class="font-semibold text-pink-900 mb-2">Circuito Ligado</p>
+                        <img src="img/led acesso.jpeg" alt="LED aceso durante o teste" class="max-w-full h-auto rounded-xl border-2 border-pink-300 shadow">
+                    </div>
 
-<!-- IMAGEM 3 -->
-<div class="flex justify-center my-4">
-  <img src="img/led acesso.jpeg" alt="led acendendo" class="max-w-full h-auto rounded-lg">
-</div>
-
-<!-- IMAGEM 4 -->
-<div class="flex justify-center my-4">
-  <img src="img/RGB.mp4" alt="cores" class="max-w-full h-auto rounded-lg">
-</div>
-                    </ul>
+                    <div class="flex flex-col items-center">
+                        <p class="font-semibold text-pink-900 mb-2">Transição RGB</p>
+                        <video controls class="max-w-full h-auto rounded-xl border-2 border-pink-300 shadow">
+                            <source src="img/RGB.mp4" type="video/mp4">
+                            Seu navegador não suporta vídeos HTML5.
+                        </video>
+                    </div>
                 </div>
+
+                <h3 class="font-bold text-xl text-pink-800 mt-4 mb-2">Como funciona?</h3>
+                <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 mb-4">
+                    <li>O Arduino controla a intensidade dos pinos de cores (Red, Green, Blue) do LED RGB.</li>
+                    <li>Ao ajustar os valores das três cores primárias, formamos a sequência completa do arco-íris.</li>
+                </ul>
 
                 <div class="mt-6 p-4 bg-pink-100 rounded-2xl border border-pink-300 text-center">
                     <span class="text-2xl">💡</span>
@@ -487,29 +363,21 @@
 
     </main>
 
-    <!-- Footer -->
     <footer class="mt-16 text-center text-pink-800 font-bold text-lg">
-        <p>🌸 Daltonismo - Trabalho de Programação,Fisica e tec e Robótica 🌸</p>
+        <p>🌸 Daltonismo - Trabalho de Programação, Física, Tecnologia e Robótica 🌸</p>
     </footer>
 
-    <!-- Interactive Logic Script -->
     <script>
-        /**
-         * Changes the color filter applied to the flower simulator and updates descriptive text.
-         */
         function changeVision(type, btnElement) {
             const flower = document.getElementById('flower-container');
             const desc = document.getElementById('vision-description');
             const buttons = document.querySelectorAll('.filter-btn');
 
-            // Reset active button styling
             buttons.forEach(btn => btn.classList.remove('active-filter-btn'));
             btnElement.classList.add('active-filter-btn');
 
-            // Reset filter classes
             flower.className = 'transition-all duration-500 flex justify-center items-center ';
 
-            // Apply selected filter & descriptive text
             switch(type) {
                 case 'protanopia':
                     flower.classList.add('filter-protanopia');
