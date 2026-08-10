@@ -1,15 +1,14 @@
 body {
     font-family: 'Nunito', sans-serif;
-    background-color: #FFF0F5; /* Lavender Blush Pink */
+    background-color: #FFF0F5;
     color: #4A1525;
-    font-size: 1.125rem;
 }
 
 h1, h2, h3, .font-heading {
     font-family: 'Fredoka', cursive, sans-serif;
 }
 
-/* 3D Flip Card Styles */
+/* 3D Flip Card Styles - Mantém as frentes e versos no tamanho correto */
 .perspective-1000 {
     perspective: 1000px;
 }
@@ -31,6 +30,8 @@ h1, h2, h3, .font-heading {
 
 .flip-card-front, .flip-card-back {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     -webkit-backface-visibility: hidden;
@@ -40,8 +41,9 @@ h1, h2, h3, .font-heading {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1.5rem;
-    box-shadow: 0 10px 25px -5px rgba(236, 64, 122, 0.2), 0 8px 10px -6px rgba(236, 64, 122, 0.1);
+    padding: 1.25rem;
+    box-shadow: 0 8px 20px rgba(236, 64, 122, 0.15);
+    box-sizing: border-box;
 }
 
 .flip-card-front {
@@ -56,25 +58,26 @@ h1, h2, h3, .font-heading {
     border: 3px solid #EC407A;
 }
 
-/* Custom Pink Glassmorphism Cards */
+/* Cards com transparência suave */
 .pink-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.90);
     backdrop-filter: blur(8px);
     border: 2px solid #F8BBD0;
     border-radius: 1.5rem;
-    box-shadow: 0 10px 20px rgba(194, 24, 91, 0.08);
+    box-shadow: 0 8px 16px rgba(194, 24, 91, 0.06);
 }
 
-/* Flower vision simulation SVG filters */
+/* Filtros de visão da flor */
 .filter-normal { filter: none; }
 .filter-protanopia { filter: url(#protanopia-filter); }
 .filter-deuteranopia { filter: url(#deuteranopia-filter); }
 .filter-tritanopia { filter: url(#tritanopia-filter); }
 .filter-achromatopsia { filter: url(#achromatopsia-filter); }
 
+/* Botão ativo no simulador */
 .active-filter-btn {
     background-color: #D81B60 !important;
     color: white !important;
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(216, 27, 96, 0.4);
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
 }
