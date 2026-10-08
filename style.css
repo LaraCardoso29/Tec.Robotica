@@ -1,83 +1,27 @@
 body {
-    font-family: 'Nunito', sans-serif;
-    background-color: #FFF0F5;
-    color: #4A1525;
+    font-family: 'Inter', sans-serif;
 }
 
-h1, h2, h3, .font-heading {
-    font-family: 'Fredoka', cursive, sans-serif;
+.bg-pink-gradient {
+    background: linear-gradient(
+        135deg,
+        #db2777 0%,
+        #be185d 50%,
+        #831843 100%
+    );
 }
 
-/* 3D Flip Card Styles - Mantém as frentes e versos no tamanho correto */
-.perspective-1000 {
-    perspective: 1000px;
+.bg-pink-soft-gradient {
+    background: linear-gradient(
+        180deg,
+        #fdf2f8 0%,
+        #ffffff 100%
+    );
 }
 
-.flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-    transform-style: preserve-3d;
-    cursor: pointer;
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(251, 207, 232, 0.5);
 }
-
-.flip-card:hover .flip-card-inner,
-.flip-card.flipped .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    border-radius: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 1.25rem;
-    box-shadow: 0 8px 20px rgba(236, 64, 122, 0.15);
-    box-sizing: border-box;
-}
-
-.flip-card-front {
-    background: linear-gradient(135deg, #ffffff 0%, #FCE4EC 100%);
-    border: 3px solid #F8BBD0;
-}
-
-.flip-card-back {
-    background: linear-gradient(135deg, #F8BBD0 0%, #F48FB1 100%);
-    color: #4A1525;
-    transform: rotateY(180deg);
-    border: 3px solid #EC407A;
-}
-
-/* Cards com transparência suave */
-.pink-card {
-    background: rgba(255, 255, 255, 0.90);
-    backdrop-filter: blur(8px);
-    border: 2px solid #F8BBD0;
-    border-radius: 1.5rem;
-    box-shadow: 0 8px 16px rgba(194, 24, 91, 0.06);
-}
-
-/* Filtros de visão da flor */
-.filter-normal { filter: none; }
-.filter-protanopia { filter: url(#protanopia-filter); }
-.filter-deuteranopia { filter: url(#deuteranopia-filter); }
-.filter-tritanopia { filter: url(#tritanopia-filter); }
-.filter-achromatopsia { filter: url(#achromatopsia-filter); }
-
-/* Botão ativo no simulador */
-.active-filter-btn {
-    background-color: #D81B60 !important;
-    color: white !important;
-    transform: scale(1.03);
-    box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
-}
+ 
