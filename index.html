@@ -1,434 +1,53 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daltonismo - Mitos, Verdades e Simulador</title>
+
+    <title>Colégio Estadual Padre Cláudio Morelli - Curitiba / PR</title>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="min-h-screen pb-16">
 
-    <!-- SVG Filters para Simulação de Daltonismo -->
-    <svg class="hidden" aria-hidden="true">
-        <defs>
-            <filter id="protanopia-filter">
-                <feColorMatrix type="matrix" values="
-                    0.56667 0.43333 0.00000 0 0
-                    0.55833 0.44167 0.00000 0 0
-                    0.00000 0.24167 0.75833 0 0
-                    0 0 0 1 0" />
-            </filter>
-            <filter id="deuteranopia-filter">
-                <feColorMatrix type="matrix" values="
-                    0.62515 0.37485 0.00000 0 0
-                    0.70000 0.30000 0.00000 0 0
-                    0.00000 0.30000 0.70000 0 0
-                    0 0 0 1 0" />
-            </filter>
-            <filter id="tritanopia-filter">
-                <feColorMatrix type="matrix" values="
-                    0.95000 0.05000 0.00000 0 0
-                    0.00000 0.43333 0.56667 0 0
-                    0.00000 0.47500 0.52500 0 0
-                    0 0 0 1 0" />
-            </filter>
-            <filter id="achromatopsia-filter">
-                <feColorMatrix type="matrix" values="
-                    0.299 0.587 0.114 0 0
-                    0.299 0.587 0.114 0 0
-                    0.299 0.587 0.114 0 0
-                    0 0 0 1 0" />
-            </filter>
-        </defs>
-    </svg>
-
-    <!-- Cabeçalho -->
-    <header class="bg-gradient-to-r from-pink-300 via-pink-400 to-rose-400 text-white py-8 px-4 shadow-lg text-center rounded-b-3xl">
-        <div class="max-w-4xl mx-auto">
-            <span class="inline-block bg-white/30 text-white text-base px-4 py-1 rounded-full font-bold mb-2 uppercase tracking-wide">Pesquisa Completa</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold tracking-wide mb-3 drop-shadow-sm">
-                🌸 Trabalho Integrador de Matérias
-            </h1>
-            <p class="text-lg md:text-xl font-semibold opacity-95 max-w-2xl mx-auto">
-                O que é, tipos, causas e robótica...
-            </p>
-        </div>
-    </header>
-
-    <main class="max-w-5xl mx-auto px-4 mt-8 space-y-12">
-
-        <!-- Resumo Inicial -->
-        <section class="pink-card p-6 md:p-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-pink-700 mb-4 flex items-center gap-3">
-                <span>👁️</span> O que é o Daltonismo?
-            </h2>
-            <p class="text-base md:text-lg text-gray-800 leading-relaxed mb-6">
-                O <strong>daltonismo</strong> é uma condição que altera a percepção das cores. Pessoas daltônicas têm dificuldade para diferenciar algumas cores porque os <strong>cones da retina</strong> (as células responsáveis pela visão das cores) não funcionam corretamente. Na maioria dos casos é hereditário, mas pode ser provocado por doenças ou lesões.
-            </p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-                <div class="bg-red-100 border-2 border-red-300 p-4 rounded-2xl text-center">
-                    <div class="w-8 h-8 bg-red-500 rounded-full mx-auto mb-2 shadow"></div>
-                    <h3 class="font-bold text-lg text-red-800">Cones Vermelhos</h3>
-                    <p class="text-sm text-red-900 mt-1">Percebem tons de vermelho.</p>
-                </div>
-                <div class="bg-green-100 border-2 border-green-300 p-4 rounded-2xl text-center">
-                    <div class="w-8 h-8 bg-green-500 rounded-full mx-auto mb-2 shadow"></div>
-                    <h3 class="font-bold text-lg text-green-800">Cones Verdes</h3>
-                    <p class="text-sm text-green-900 mt-1">Percebem tons de verde.</p>
-                </div>
-                <div class="bg-blue-100 border-2 border-blue-300 p-4 rounded-2xl text-center">
-                    <div class="w-8 h-8 bg-blue-500 rounded-full mx-auto mb-2 shadow"></div>
-                    <h3 class="font-bold text-lg text-blue-800">Cones Azuis</h3>
-                    <p class="text-sm text-blue-900 mt-1">Percebem tons de azul.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Simulador Interativo -->
-        <section class="pink-card p-6 md:p-8 text-center border-4 border-pink-300">
-            <span class="bg-pink-200 text-pink-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Experiência Interativa</span>
-            <h2 class="text-2xl md:text-3xl font-bold text-pink-800 mt-2 mb-3">
-                🌷 Simulador de Visão da Florzinha
-            </h2>
-            <p class="text-base md:text-lg text-gray-700 max-w-2xl mx-auto mb-6">
-                Clique nos botões abaixo para ver como uma flor bem colorida é enxergada por pessoas com diferentes tipos de daltonismo!
-            </p>
-
-            <div class="flex flex-wrap justify-center gap-2 md:gap-3 mb-8">
-                <button onclick="changeVision('normal', this)" class="filter-btn active-filter-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base bg-pink-100 text-pink-800 hover:bg-pink-200 transition-all border border-pink-300">
-                    👁️ Visão Normal
-                </button>
-                <button onclick="changeVision('protanopia', this)" class="filter-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base bg-pink-100 text-pink-800 hover:bg-pink-200 transition-all border border-pink-300">
-                    🔴 Protanopia (Sem Vermelho)
-                </button>
-                <button onclick="changeVision('deuteranopia', this)" class="filter-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base bg-pink-100 text-pink-800 hover:bg-pink-200 transition-all border border-pink-300">
-                    🟢 Deuteranopia (Sem Verde)
-                </button>
-                <button onclick="changeVision('tritanopia', this)" class="filter-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base bg-pink-100 text-pink-800 hover:bg-pink-200 transition-all border border-pink-300">
-                    🔵 Tritanopia (Sem Azul)
-                </button>
-                <button onclick="changeVision('achromatopsia', this)" class="filter-btn px-4 py-2.5 rounded-xl font-bold text-sm md:text-base bg-pink-100 text-pink-800 hover:bg-pink-200 transition-all border border-pink-300">
-                    ⚪ Acromatopsia (Monocromático)
-                </button>
-            </div>
-
-            <div class="bg-white/90 p-6 rounded-3xl border-2 border-pink-200 max-w-md mx-auto shadow-inner">
-                <div id="flower-container" class="filter-normal transition-all duration-500 flex justify-center items-center my-4">
-                    <svg width="220" height="220" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="100" cy="100" r="95" fill="#E0F7FA"/>
-                        <path d="M100,100 Q90,150 100,190" stroke="#2E7D32" stroke-width="10" fill="none" stroke-linecap="round"/>
-                        <path d="M96,140 Q60,130 70,115 Q90,120 96,140" fill="#4CAF50" stroke="#1B5E20" stroke-width="2"/>
-                        <path d="M102,155 Q140,145 130,130 Q110,135 102,155" fill="#388E3C" stroke="#1B5E20" stroke-width="2"/>
-
-                        <g fill="#E53935" stroke="#B71C1C" stroke-width="2">
-                            <circle cx="100" cy="60" r="28"/>
-                            <circle cx="140" cy="100" r="28"/>
-                            <circle cx="100" cy="140" r="28"/>
-                            <circle cx="60" cy="100" r="28"/>
-                            <circle cx="72" cy="72" r="26"/>
-                            <circle cx="128" cy="72" r="26"/>
-                            <circle cx="128" cy="128" r="26"/>
-                            <circle cx="72" cy="128" r="26"/>
-                        </g>
-
-                        <g fill="#FF4081">
-                            <circle cx="100" cy="72" r="16"/>
-                            <circle cx="128" cy="100" r="16"/>
-                            <circle cx="100" cy="128" r="16"/>
-                            <circle cx="72" cy="100" r="16"/>
-                        </g>
-
-                        <circle cx="100" cy="100" r="24" fill="#FFEB3B" stroke="#F57F17" stroke-width="3"/>
-                        <circle cx="100" cy="100" r="18" fill="#FBC02D"/>
-                    </svg>
-                </div>
-                <div id="vision-description" class="mt-4 p-3 bg-pink-50 rounded-xl text-pink-900 font-semibold text-base">
-                    Visão Normal: Todas as cores (pétalas vermelhas, folhas verdes e centro amarelo) são percebidas vivas.
-                </div>
-            </div>
-        </section>
-
-        <!-- Flash Cards: Mitos ou Verdades -->
-        <section>
-            <div class="text-center mb-6">
-                <span class="bg-pink-200 text-pink-800 text-xs font-bold px-3 py-1 rounded-full uppercase">Jogo de Cartas</span>
-                <h2 class="text-2xl md:text-3xl font-bold text-pink-800 mt-1">
-                    🃏 Mitos ou Verdades sobre o Daltonismo
-                </h2>
-                <p class="text-base text-gray-700 mt-1">
-                    Clique em cada cartão para descobrir a resposta!
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Card 1 -->
-                <div class="flip-card perspective-1000 h-72" onclick="this.classList.toggle('flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span class="text-3xl mb-2">🏁</span>
-                            <h3 class="text-xl font-bold text-pink-800">Mito ou Verdade?</h3>
-                            <p class="text-base font-semibold text-gray-700 mt-2">"Pessoas daltônicas enxergam apenas em preto e branco."</p>
-                            <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique para virar 🔄</span>
-                        </div>
-                        <div class="flip-card-back">
-                            <span class="text-xl font-extrabold uppercase bg-red-600 text-white px-3 py-1 rounded-full mb-2">❌ MITO</span>
-                            <p class="text-sm md:text-base font-medium">
-                                A maioria dos daltônicos vê cores, apenas confunde algumas (como vermelho e verde). Enxergar só em preto e branco é a <strong>Acromatopsia</strong>, que é extremamente rara!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 2 -->
-                <div class="flip-card perspective-1000 h-72" onclick="this.classList.toggle('flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span class="text-3xl mb-2">👨‍⚕️</span>
-                            <h3 class="text-xl font-bold text-pink-800">Mito ou Verdade?</h3>
-                            <p class="text-base font-semibold text-gray-700 mt-2">"O daltonismo afeta muito mais homens do que mulheres."</p>
-                            <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique para virar 🔄</span>
-                        </div>
-                        <div class="flip-card-back">
-                            <span class="text-xl font-extrabold uppercase bg-green-600 text-white px-3 py-1 rounded-full mb-2">✅ VERDADE</span>
-                            <p class="text-sm md:text-base font-medium">
-                                Cerca de <strong>8% dos homens</strong> têm daltonismo, enquanto apenas <strong>0,5% das mulheres</strong> possuem a condição, pois o gene está ligado ao cromossomo X.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="flip-card perspective-1000 h-72" onclick="this.classList.toggle('flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span class="text-3xl mb-2">👓</span>
-                            <h3 class="text-xl font-bold text-pink-800">Mito ou Verdade?</h3>
-                            <p class="text-base font-semibold text-gray-700 mt-2">"Existem óculos especiais que curam o daltonismo."</p>
-                            <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique para virar 🔄</span>
-                        </div>
-                        <div class="flip-card-back">
-                            <span class="text-xl font-extrabold uppercase bg-red-600 text-white px-3 py-1 rounded-full mb-2">❌ MITO</span>
-                            <p class="text-sm md:text-base font-medium">
-                                O daltonismo hereditário <strong>não tem cura</strong>. Óculos com lentes especiais ajudam a aumentar o contraste de certas tonalidades, mas não "curam" a visão.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="flip-card perspective-1000 h-72" onclick="this.classList.toggle('flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span class="text-3xl mb-2">🚦</span>
-                            <h3 class="text-xl font-bold text-pink-800">Mito ou Verdade?</h3>
-                            <p class="text-base font-semibold text-gray-700 mt-2">"Daltônicos não conseguem tirar carteira de motorista."</p>
-                            <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique para virar 🔄</span>
-                        </div>
-                        <div class="flip-card-back">
-                            <span class="text-xl font-extrabold uppercase bg-red-600 text-white px-3 py-1 rounded-full mb-2">❌ MITO</span>
-                            <p class="text-sm md:text-base font-medium">
-                                Daltônicos podem dirigir normalmente! Eles aprendem a identificar a posição das luzes nos semáforos (vermelho no topo, verde embaixo) e a intensidade dos sinais.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="flip-card perspective-1000 h-72" onclick="this.classList.toggle('flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span class="text-3xl mb-2">📜</span>
-                            <h3 class="text-xl font-bold text-pink-800">Mito ou Verdade?</h3>
-                            <p class="text-base font-semibold text-gray-700 mt-2">"O nome 'Daltonismo' veio de um cientista daltônico."</p>
-                            <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique para virar 🔄</span>
-                        </div>
-                        <div class="flip-card-back">
-                            <span class="text-xl font-extrabold uppercase bg-green-600 text-white px-3 py-1 rounded-full mb-2">✅ VERDADE</span>
-                            <p class="text-sm md:text-base font-medium">
-                                Homenagem a <strong>John Dalton</strong>, um químico e físico britânico que pesquisou cientificamente sua própria incapacidade de distinguir cores no século XVIII.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="flip-card perspective-1000 h-72" onclick="this.classList.toggle('flipped')">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <span class="text-3xl mb-2">🎨</span>
-                            <h3 class="text-xl font-bold text-pink-800">Mito ou Verdade?</h3>
-                            <p class="text-base font-semibold text-gray-700 mt-2">"O tipo mais comum é a confusão entre Vermelho e Verde."</p>
-                            <span class="mt-4 text-xs bg-pink-200 text-pink-800 font-bold px-3 py-1 rounded-full">Clique para virar 🔄</span>
-                        </div>
-                        <div class="flip-card-back">
-                            <span class="text-xl font-extrabold uppercase bg-green-600 text-white px-3 py-1 rounded-full mb-2">✅ VERDADE</span>
-                            <p class="text-sm md:text-base font-medium">
-                                A Protanopia e a Deuteranopia (dificuldades em enxergar tons de vermelho e verde) correspondem à grande maioria dos casos no mundo!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Seções Informátivas em Grid de 2 Colunas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Tipos de Daltonismo -->
-            <section class="pink-card p-6 md:p-8 flex flex-col justify-between">
-                <div>
-                    <h2 class="text-2xl font-bold text-pink-700 mb-4 flex items-center gap-2">
-                        <span>📊</span> Principais Tipos
-                    </h2>
-                    <ul class="space-y-3 text-gray-800 text-base">
-                        <li class="p-3 bg-pink-50 rounded-xl border-l-4 border-red-400">
-                            <strong class="text-pink-900 block font-bold">Protanopia / Protanomalia:</strong>
-                            Dificuldade em perceber a cor <strong>vermelha</strong>.
-                        </li>
-                        <li class="p-3 bg-pink-50 rounded-xl border-l-4 border-green-400">
-                            <strong class="text-pink-900 block font-bold">Deuteranopia / Deuteranomalia:</strong>
-                            Dificuldade em enxergar a cor <strong>verde</strong> (mais comum).
-                        </li>
-                        <li class="p-3 bg-pink-50 rounded-xl border-l-4 border-blue-400">
-                            <strong class="text-pink-900 block font-bold">Tritanopia / Tritanomalia:</strong>
-                            Dificuldade em diferenciar <strong>azul e amarelo</strong> (mais rara).
-                        </li>
-                        <li class="p-3 bg-pink-50 rounded-xl border-l-4 border-gray-400">
-                            <strong class="text-pink-900 block font-bold">Acromatopsia:</strong>
-                            Visão apenas em tons de cinza, preto e branco (muito rara).
-                        </li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Diagnóstico e Apoio -->
-            <section class="pink-card p-6 md:p-8 flex flex-col justify-between">
-                <div>
-                    <h2 class="text-2xl font-bold text-pink-700 mb-4 flex items-center gap-2">
-                        <span>🩺</span> Diagnóstico e Apoio
-                    </h2>
-                    <p class="text-base text-gray-800 mb-4">
-                        O diagnóstico é feito por um oftalmologista utilizando exames visuais como o <strong>Teste de Ishihara</strong> (círculos formados por pontos coloridos com números no centro).
-                    </p>
-                    <h3 class="font-bold text-lg text-pink-800 mt-4 mb-2">Recursos de ajuda no dia a dia:</h3>
-                    <ul class="list-disc list-inside space-y-2 text-base text-gray-800">
-                        <li>Óculos e lentes com filtros de alto contraste.</li>
-                        <li>Aplicativos móveis leitores de cores.</li>
-                        <li>Adaptações em materiais escolares e digitais.</li>
-                    </ul>
-                </div>
-
-                <div class="mt-6 p-4 bg-pink-100 rounded-2xl border border-pink-300 text-center">
-                    <span class="text-xl">💡</span>
-                    <p class="font-bold text-pink-900 text-base">Curiosidade</p>
-                    <p class="text-sm text-pink-800">Pessoas daltônicas costumam desenvolver excelente sensibilidade ao contraste de luz e textura!</p>
-                </div>
-            </section>
-        </div>
-
-        <!-- Seção de Robótica Organizada -->
-        <section class="pink-card p-6 md:p-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-pink-700 mb-4 flex items-center gap-2">
-                <span>🤖</span> Relacionando com as Aulas de Robótica: LED RGB e Projeto Arco-Íris
-            </h2>
-            
-            <p class="text-base md:text-lg text-gray-800 mb-6">
-                Por meio desse projeto, é possível compreender como o olho humano interpreta a mistura de cores primárias e como pessoas com daltonismo percebem as <strong>cores de forma diferente</strong>.
-            </p>
-
-            <!-- Grid de Mídias (2x2 em telas médias/grandes) -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 my-6">
-                <!-- Mídia 1 -->
-                <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-200 flex flex-col items-center">
-                    <p class="font-bold text-pink-900 mb-3 text-center">Estudos do Projeto</p>
-                    <img src="img/computador .jpg" alt="Estudos do projeto" class="w-full h-48 object-cover rounded-xl border border-pink-300 shadow-sm">
-                </div>
-
-                <!-- Mídia 2 -->
-                <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-200 flex flex-col items-center">
-                    <p class="font-bold text-pink-900 mb-3 text-center">LED Acendendo</p>
-                    <video controls class="w-full h-48 rounded-xl border border-pink-300 shadow-sm bg-black">
-                        <source src="img/Led acendendo .mp4" type="video/mp4">
-                        Seu navegador não suporta vídeos.
-                    </video>
-                </div>
-
-                <!-- Mídia 3 -->
-                <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-200 flex flex-col items-center">
-                    <p class="font-bold text-pink-900 mb-3 text-center">Circuito Ligado</p>
-                    <img src="img/led acesso.jpeg" alt="LED aceso" class="w-full h-48 object-cover rounded-xl border border-pink-300 shadow-sm">
-                </div>
-
-                <!-- Mídia 4 -->
-                <div class="bg-pink-50/60 p-4 rounded-2xl border border-pink-200 flex flex-col items-center">
-                    <p class="font-bold text-pink-900 mb-3 text-center">Transição RGB</p>
-                    <video controls class="w-full h-48 rounded-xl border border-pink-300 shadow-sm bg-black">
-                        <source src="img/RGB.mp4" type="video/mp4">
-                        Seu navegador não suporta vídeos.
-                    </video>
-                </div>
-            </div>
-
-            <div class="mt-6 bg-white/70 p-5 rounded-2xl border border-pink-200">
-                <h3 class="font-bold text-xl text-pink-800 mb-2">Como funciona?</h3>
-                <ul class="list-disc list-inside space-y-2 text-base text-gray-800">
-                    <li>O Arduino controla a intensidade dos pinos das cores primárias (Vermelho, Verde e Azul).</li>
-                    <li>A combinação das intensidades cria diversas tonalidades, simulando o arco-íris.</li>
-                </ul>
-            </div>
-
-            <div class="mt-6 p-4 bg-pink-100 rounded-2xl border border-pink-300 text-center">
-                <p class="font-bold text-pink-900 text-base">2 Trimestre</p>
-                <p class="text-base text-pink-800 font-semibold">2 ano C</p>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Rodapé -->
-    <footer class="mt-16 text-center text-pink-800 font-bold text-base md:text-lg">
-        <p>Colegio Estadual Padre Claudio Morelli</p>
-        <p>Lara Cardoso Alvino</p>
-        <p>🌸 Daltonismo - Trabalho de Programação, Física e Tecnociência,Robótica 🌸</p>
-    </footer>
-
-    <!-- Script de Filtro -->
+    <!-- Configuração Tailwind -->
     <script>
-        function changeVision(type, btnElement) {
-            const flower = document.getElementById('flower-container');
-            const desc = document.getElementById('vision-description');
-            const buttons = document.querySelectorAll('.filter-btn');
-
-            buttons.forEach(btn => btn.classList.remove('active-filter-btn'));
-            btnElement.classList.add('active-filter-btn');
-
-            flower.className = 'transition-all duration-500 flex justify-center items-center my-4 ';
-
-            switch(type) {
-                case 'protanopia':
-                    flower.classList.add('filter-protanopia');
-                    desc.innerHTML = '<strong>Protanopia (Insensibilidade ao Vermelho):</strong> As pétalas vermelhas parecem marrom-escuro/dourado e o verde fica levemente amarelado.';
-                    break;
-                case 'deuteranopia':
-                    flower.classList.add('filter-deuteranopia');
-                    desc.innerHTML = '<strong>Deuteranopia (Insensibilidade ao Verde):</strong> As pétalas vermelhas ganham tom acastanhado e o caule/folhas verdes parecem bege/amarelo.';
-                    break;
-                case 'tritanopia':
-                    flower.classList.add('filter-tritanopia');
-                    desc.innerHTML = '<strong>Tritanopia (Insensibilidade ao Azul):</strong> O fundo azul da flor fica esverdeado e o centro amarelo muda para um tom rosado.';
-                    break;
-                case 'achromatopsia':
-                    flower.classList.add('filter-achromatopsia');
-                    desc.innerHTML = '<strong>Acromatopsia (Monocromático):</strong> Toda a imagem perde suas cores e é enxergada apenas em tons de cinza, preto e branco.';
-                    break;
-                default:
-                    flower.classList.add('filter-normal');
-                    desc.innerHTML = '<strong>Visão Normal:</strong> Todas as cores (pétalas vermelhas, folhas verdes e centro amarelo) são percebidas vivas.';
-                    break;
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pinky: {
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f472b6',
+                            400: '#e879f9',
+                            500: '#ec4899',
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                            950: '#500724'
+                        },
+                        rosewood: '#4a0e2e'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif']
+                    }
+                }
             }
         }
     </script>
-</body>
-</html>
+
+    <!-- CSS próprio -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+       
+      
